@@ -14,9 +14,9 @@ public class CoinSpawner : MonoBehaviour
     foreach (GameObject gameObject in gameObjects)
     {
       int rand = Random.Range(0, 10);
-      if (rand < 5)
+      if (rand < 3)
       {
-        Vector3 coinPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z);
+        Vector3 coinPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1f, gameObject.transform.position.z);
         Instantiate(coin, coinPosition, Quaternion.identity);
         // print($"{gameObject.name} {gameObject.transform.position}");
       }

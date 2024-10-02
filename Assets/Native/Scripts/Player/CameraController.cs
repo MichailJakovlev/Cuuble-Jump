@@ -3,9 +3,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private float smoothTime;
-
+    [SerializeField] private GameObject _player;
+    
     private Transform target;
-    public GameObject _player;
     private Vector3 _offset;
     private Vector3 _currentVelocity = Vector3.zero;
 
