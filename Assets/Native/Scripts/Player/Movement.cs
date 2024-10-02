@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     public void Start()
     {
         _totalTime = _jumpStrenghtCurve.keys[_jumpStrenghtCurve.keys.Length - 1].time;
-        
+
     }
 
     public void Update()
@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
              StartCoroutine(JumpLeft());
             _isMoving = true;
         }
-        
+
         if (Input.GetKeyUp(KeyCode.D) && _isMoving == false)
         {
              StartCoroutine(JumpRight());
@@ -97,7 +97,7 @@ public class Movement : MonoBehaviour
 
             yield return null;
         }
-        
+
         _jumpStrenghtCurve = new AnimationCurve(new Keyframe(0, _player.transform.position.y), new Keyframe(0.3f, _player.transform.position.y + 1.5f), new Keyframe(0.6f, _player.transform.position.y + 0.75f));
         _jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, _player.transform.position.x), new Keyframe(0.6f, _player.transform.position.x - 1.5f));
         _isMoving = false;

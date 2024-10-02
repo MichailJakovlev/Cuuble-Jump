@@ -7,12 +7,12 @@ public class SceneState : MonoBehaviour
 
     public void ToGameScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex == 0 ? 1 : 1);
     }
 
     public void ToMenuScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        _gameState.StartGame();
+        // _gameState.StartGame();
     }
 }
