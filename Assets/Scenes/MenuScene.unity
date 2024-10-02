@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 207443687}
   - component: {fileID: 207443686}
   m_Layer: 5
-  m_Name: Coins TMP
+  m_Name: Coins Shop TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -661,9 +661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '354
-
-'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d38f9dac93fc89845b094e4939b8786c, type: 2}
   m_sharedMaterial: {fileID: -2643127496456691263, guid: d38f9dac93fc89845b094e4939b8786c, type: 2}
@@ -1164,7 +1162,7 @@ GameObject:
   - component: {fileID: 290473196}
   - component: {fileID: 290473195}
   m_Layer: 5
-  m_Name: Score TMP
+  m_Name: Coins TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1224,7 +1222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '354
+  m_text: '0
 
 '
   m_isRightToLeft: 0
@@ -2387,6 +2385,8 @@ GameObject:
   - component: {fileID: 824443034}
   - component: {fileID: 824443033}
   - component: {fileID: 824443037}
+  - component: {fileID: 824443038}
+  - component: {fileID: 824443039}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2496,6 +2496,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stopSoundButton: {fileID: 1903173828}
   _startSoundButton: {fileID: 482294189}
+--- !u!114 &824443038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824443032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cee30df09318e04b9a73fb423d7636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
+--- !u!114 &824443039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824443032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0f1bf3723a0f54fb60a0b83a75c43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinCounter: {fileID: 0}
+  _allCoinsTMP: {fileID: 290473196}
+  _allCoinsShopTMP: {fileID: 207443687}
 --- !u!1001 &880319285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2873,7 +2901,7 @@ GameObject:
   - component: {fileID: 908108669}
   - component: {fileID: 908108668}
   m_Layer: 5
-  m_Name: Coins
+  m_Name: Coins Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5999,7 +6027,7 @@ GameObject:
   - component: {fileID: 2002758560}
   - component: {fileID: 2002758559}
   m_Layer: 5
-  m_Name: Coins Value
+  m_Name: Coins Shop Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
