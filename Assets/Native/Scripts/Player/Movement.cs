@@ -23,8 +23,8 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.D) && _isMoving == false)
         {
-            StartCoroutine(JumpUp());
-            _isMoving = true;
+            //StartCoroutine(JumpUp());
+            //_isMoving = true;
         }
 
         if (Input.GetKeyUp(KeyCode.A) && _isMoving == false)
@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
         }
 
         _jumpStrenghtCurve = new AnimationCurve(new Keyframe(0, _player.transform.position.y), new Keyframe(0.3f, _player.transform.position.y + 1.5f), new Keyframe(0.6f, _player.transform.position.y + 0.75f));
-        _jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, _player.transform.position.x), new Keyframe(0.6f, _player.transform.position.x - 1.5f));
+        _jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, _player.transform.position.x), new Keyframe(0.6f, _player.transform.position.x - 1.5f));   
         _jumpDirectionAxisZ = new AnimationCurve(new Keyframe(0, _player.transform.position.z), new Keyframe(0.6f, _player.transform.position.z - 1.5f));
         _isMoving = false;
     }
