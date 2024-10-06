@@ -16,7 +16,7 @@ public class CoinTaker : MonoBehaviour
       _coinCounter.coins++;
       print(_coinCounter.coins);
       _coinCounter.PlayerPrefsCoinsSet(_coinCounter.PlayerPrefsCoinsGet() + 1);
-      Destroy(other.gameObject);
+      other.gameObject.SetActive(false);
     }
   }
 }
