@@ -5,18 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkinDataBase", menuName = "ScriptableObject/SkinDataBase")]
 public class SkinDataBase : ScriptableObject
 {
-    public Skin[] skin;
+    public Skin[] skins;
 
     public int SkinCount
     {
         get
         {
-            return skin.Length;
+            return skins.Length;
         }
     }
 
     public Skin GetSkin(int index)
     {
-        return skin[index];
+        return skins[index];
     }
 }

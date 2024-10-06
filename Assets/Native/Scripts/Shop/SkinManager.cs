@@ -6,11 +6,17 @@ public class SkinManager : MonoBehaviour
 {
     public SkinDataBase skinDB;
     public TextMeshProUGUI priceTMP;
-    public GameObject skinModel;
     private int selectedOption = 0;
+    public Transform parent;
+
+    public GameObject defaultUnlockButton;
+    public GameObject reviewUnlockButton;
+    public GameObject selectButton;
+
     void Start()
     {
         UpdateSkin(selectedOption);
+        SpawnSkins(selectedOption);
     }
 
     public void NextOption()
@@ -41,10 +47,55 @@ public class SkinManager : MonoBehaviour
     {
         Skin skin = skinDB.GetSkin(selectedOption);
         priceTMP.text = skin.price.ToString();
-        // skinModel.transform = PrefabUtility.RecordPrefabInstancePropertyModifications(skin.skinModel);
-        if (skinModel != null && skin.skinModel != null)
+        SetActiveSkins(selectedOption);
+        SetActiveButton(defaultUnlockButton, new GameObject[] { reviewUnlockButton, selectButton });
+        if (skin.isDefault)
         {
-            // PrefabUtility.ReplacePrefab(skinModel, skin.skinModel, ReplacePrefabOptions.ConnectToPrefab);
+            SetActiveButton(selectButton, new GameObject[] { reviewUnlockButton, defaultUnlockButton });
+        }
+        if (skin.isReview)
+        {
+            SetActiveButton(reviewUnlockButton, new GameObject[] { selectButton, defaultUnlockButton });
+        }
+    }
+
+    private void SetActiveSkins(int selectedOption)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            parent.GetChild(i).gameObject.SetActive(false);
+            if (selectedOption == i)
+            {
+                parent.GetChild(i).gameObject.SetActive(true);
+            }
+
+        }
+    }
+
+    private void SpawnSkins(int selectedOption)
+    {
+        for (int i = 0; i < skinDB.SkinCount; i++)
+        {
+            GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel,
+                new Vector3(-2.29999995f,-25.8999996f,-35.0999985f),
+                new Quaternion(-0.0558543317f,-0.33958146f,0.0260453075f,0.938555539f));
+
+            spawnedSkin.transform.SetParent(parent, false);
+            spawnedSkin.transform.localScale = new Vector3(40,40,40);
+            spawnedSkin.SetActive(false);
+            if (selectedOption == i)
+            {
+                spawnedSkin.SetActive(true);
+            }
+        }
+    }
+
+    private void SetActiveButton(GameObject activeButton, GameObject[] disableButtons)
+    {
+        activeButton.SetActive(true);
+        foreach (GameObject disableButton in disableButtons)
+        {
+            disableButton.SetActive(false);
         }
     }
 }

@@ -7,5 +7,6 @@ public class Skin
 {
     public GameObject skinModel;
     public int price;
+    public bool isDefault;
     public bool isReview;
 }
