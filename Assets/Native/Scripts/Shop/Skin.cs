@@ -6,6 +6,7 @@ using UnityEngine;
 public class Skin
 {
     public GameObject skinModel;
+    public CharacterSkins name;
     public int price;
     public bool isDefault;
     public bool isReview;

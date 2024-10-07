@@ -14,38 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skins:
   - skinModel: {fileID: 8561651449974929645, guid: 3636181e8316a5b4981273dd5d7a1df7, type: 3}
+    name: 0
     price: 0
     isDefault: 1
     isReview: 0
   - skinModel: {fileID: 2479547178347721426, guid: 38c811749b442d746a8236e6e64dd592, type: 3}
+    name: 1
     price: 50
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 918703410570627978, guid: e07b0a3fe2ff1dc42a981bb4de2ae096, type: 3}
+    name: 2
     price: 100
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 4775654282291564235, guid: 74e1331e4d3a8ef48a1b36ab37e1c805, type: 3}
+    name: 3
     price: 500
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 7886645567574184139, guid: abe4f999b3ca3434f9b3e657ec8cedcf, type: 3}
+    name: 4
     price: 300
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 5637081765484602030, guid: 2ad5f69c79c16194082ea98adf46c707, type: 3}
+    name: 5
     price: 600
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 4420914172491851595, guid: 2f23579425382da4785e1f70f59d1705, type: 3}
+    name: 6
     price: 300
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 1737735738247366625, guid: a1291be5521fb63439e7adb1b747dca2, type: 3}
+    name: 7
     price: 1000
     isDefault: 0
     isReview: 0
   - skinModel: {fileID: 7410164412826919619, guid: ac1a63d84bafae04fa3dd54aa9b9ae84, type: 3}
+    name: 8
     price: 0
     isDefault: 0
     isReview: 1

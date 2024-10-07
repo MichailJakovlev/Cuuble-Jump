@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -12,11 +14,19 @@ public class SkinManager : MonoBehaviour
     public GameObject defaultUnlockButton;
     public GameObject reviewUnlockButton;
     public GameObject selectButton;
+    public GameObject selectedItem;
+    private List<string> unlockedSkins = new();
+    private string selected;
 
     void Start()
     {
-        UpdateSkin(selectedOption);
+        PlayerPrefs.GetString("SkinSelected", "Cat");
+        unlockedSkins = PlayerPrefs.GetString("UnlockedSkins").Split(',').ToList();
+        unlockedSkins.Add(skinDB.skins[0].name.ToString());
+        PlayerPrefs.GetString("UnlockedSkins", "Cat");
+
         SpawnSkins(selectedOption);
+        UpdateSkin(selectedOption);
     }
 
     public void NextOption()
@@ -48,15 +58,19 @@ public class SkinManager : MonoBehaviour
         Skin skin = skinDB.GetSkin(selectedOption);
         priceTMP.text = skin.price.ToString();
         SetActiveSkins(selectedOption);
-        SetActiveButton(defaultUnlockButton, new GameObject[] { reviewUnlockButton, selectButton });
+        SetActiveButton(defaultUnlockButton, new GameObject[] { reviewUnlockButton, selectButton, selectedItem });
+        IsUnlocked(skin);
         if (skin.isDefault)
         {
-            SetActiveButton(selectButton, new GameObject[] { reviewUnlockButton, defaultUnlockButton });
+            SetActiveButton(selectButton, new GameObject[] { reviewUnlockButton, defaultUnlockButton, selectedItem });
+            IsUnlocked(skin);
         }
-        if (skin.isReview)
+        else if (skin.isReview)
         {
-            SetActiveButton(reviewUnlockButton, new GameObject[] { selectButton, defaultUnlockButton });
+            SetActiveButton(reviewUnlockButton, new GameObject[] { selectButton, defaultUnlockButton, selectedItem });
+            IsUnlocked(skin);
         }
+
     }
 
     private void SetActiveSkins(int selectedOption)
@@ -96,6 +110,43 @@ public class SkinManager : MonoBehaviour
         foreach (GameObject disableButton in disableButtons)
         {
             disableButton.SetActive(false);
+        }
+    }
+
+    public void UnlockSkin()
+    {
+        Skin skin = skinDB.GetSkin(selectedOption);
+        unlockedSkins.Add(skin.name.ToString());
+        string result = string.Join(", ", unlockedSkins);
+        PlayerPrefs.SetString("UnlockedSkins", result);
+        PlayerPrefs.Save();
+        IsUnlocked(skin);
+    }
+
+    private void IsUnlocked(Skin skin)
+    {
+        string unlocked = unlockedSkins.Find(m => m.Contains(skin.name.ToString()));
+        if (unlocked != null)
+        {
+
+            SetActiveButton(selectButton, new GameObject[] { selectedItem, reviewUnlockButton, defaultUnlockButton });
+            IsSelected(skin);
+        }
+    }
+
+    public void SelectSkin()
+    {
+        Skin skin = skinDB.GetSkin(selectedOption);
+        PlayerPrefs.SetString("SkinSelected", skin.name.ToString());
+        PlayerPrefs.Save();
+        IsSelected(skin);
+    }
+    private void IsSelected(Skin skin)
+    {
+        selected = PlayerPrefs.GetString("SkinSelected", "Cat");
+        if (selected == skin.name.ToString())
+        {
+            SetActiveButton(selectedItem, new GameObject[] { reviewUnlockButton, defaultUnlockButton, selectButton });
         }
     }
 }
