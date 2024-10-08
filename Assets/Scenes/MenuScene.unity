@@ -448,7 +448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &174634623
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1427,6 +1427,8 @@ MonoBehaviour:
   reviewUnlockButton: {fileID: 904371696}
   selectButton: {fileID: 1024046716}
   selectedItem: {fileID: 580011866}
+  coinsButton: {fileID: 1233687937}
+  _menuCoins: {fileID: 824443039}
 --- !u!1 &482294189
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,7 +2715,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 904371699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 474298057}
+        m_TargetAssemblyTypeName: SkinManager, Assembly-CSharp
+        m_MethodName: UnlockSkinReview
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &904371699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3955,7 +3969,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 474298057}
         m_TargetAssemblyTypeName: SkinManager, Assembly-CSharp
-        m_MethodName: UnlockSkin
+        m_MethodName: UnlockSkinCoins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4820,7 +4834,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1726535794}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 474298057}
+        m_TargetAssemblyTypeName: SkinManager, Assembly-CSharp
+        m_MethodName: UnlockSkinAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1726535794
 MonoBehaviour:
   m_ObjectHideFlags: 0

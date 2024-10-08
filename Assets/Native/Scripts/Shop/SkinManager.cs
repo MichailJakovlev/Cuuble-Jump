@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkinManager : MonoBehaviour
 {
@@ -15,18 +16,21 @@ public class SkinManager : MonoBehaviour
     public GameObject reviewUnlockButton;
     public GameObject selectButton;
     public GameObject selectedItem;
+    public Button coinsButton;
+    public TMPMenuCoins _menuCoins;
     private List<string> unlockedSkins = new();
     private string selected;
 
     void Start()
     {
+        // PlayerPrefs.SetInt("coins", 10000);
         PlayerPrefs.GetString("SkinSelected", "Cat");
         unlockedSkins = PlayerPrefs.GetString("UnlockedSkins").Split(',').ToList();
         unlockedSkins.Add(skinDB.skins[0].name.ToString());
         PlayerPrefs.GetString("UnlockedSkins", "Cat");
-
         SpawnSkins(selectedOption);
         UpdateSkin(selectedOption);
+        print(skinDB.skins.FirstOrDefault(m => m.name.ToString() == PlayerPrefs.GetString("SkinSelected"))?.name.ToString());
     }
 
     public void NextOption()
@@ -113,7 +117,32 @@ public class SkinManager : MonoBehaviour
         }
     }
 
-    public void UnlockSkin()
+    public void UnlockSkinCoins()
+    {
+        Skin skin = skinDB.GetSkin(selectedOption);
+        unlockedSkins.Add(skin.name.ToString());
+        string result = string.Join(", ", unlockedSkins);
+        PlayerPrefs.SetString("UnlockedSkins", result);
+        PlayerPrefs.Save();
+        int skinPrice = skin.price;
+        if (PlayerPrefs.GetInt("coins") >= skinPrice)
+        {
+            PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - skinPrice);
+            _menuCoins.GetAllCoins();
+        }
+        IsUnlocked(skin);
+    }
+    public void UnlockSkinAd()
+    {
+        Skin skin = skinDB.GetSkin(selectedOption);
+        unlockedSkins.Add(skin.name.ToString());
+        string result = string.Join(", ", unlockedSkins);
+        PlayerPrefs.SetString("UnlockedSkins", result);
+        PlayerPrefs.Save();
+        IsUnlocked(skin);
+    }
+
+    public void UnlockSkinReview()
     {
         Skin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
@@ -126,9 +155,14 @@ public class SkinManager : MonoBehaviour
     private void IsUnlocked(Skin skin)
     {
         string unlocked = unlockedSkins.Find(m => m.Contains(skin.name.ToString()));
+
+        if (PlayerPrefs.GetInt("coins") < skin.price)
+        {
+            coinsButton.interactable = false;
+        }
+
         if (unlocked != null)
         {
-
             SetActiveButton(selectButton, new GameObject[] { selectedItem, reviewUnlockButton, defaultUnlockButton });
             IsSelected(skin);
         }
