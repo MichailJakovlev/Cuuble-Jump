@@ -13,7 +13,6 @@ public class PlayerSpawner : MonoBehaviour
         spawnedSkin.layer = LayerMask.NameToLayer("Default");
         spawnedSkin.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
         spawnedSkin.transform.SetParent(_parent, false);
-
     }
 
 }

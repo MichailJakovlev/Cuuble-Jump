@@ -112,7 +112,7 @@ SpriteAtlas:
   - Grass-1
   - Grass-Buttons-arrow2
   - Buttons-pause
-  - Background
+  - Background-gui
   - Arrow4
   - Store
   - Buttons-house

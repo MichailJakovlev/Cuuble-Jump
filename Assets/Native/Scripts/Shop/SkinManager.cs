@@ -18,6 +18,7 @@ public class SkinManager : MonoBehaviour
     public GameObject selectedItem;
     public Button coinsButton;
     public TMPMenuCoins _menuCoins;
+    public MenuPlayer _menuPlayer;
     private List<string> unlockedSkins = new();
     private string selected;
 
@@ -173,6 +174,8 @@ public class SkinManager : MonoBehaviour
         Skin skin = skinDB.GetSkin(selectedOption);
         PlayerPrefs.SetString("SkinSelected", skin.name.ToString());
         PlayerPrefs.Save();
+        _menuPlayer.GetSkin();
+        _menuPlayer.DestroySkin();
         IsSelected(skin);
     }
     private void IsSelected(Skin skin)
