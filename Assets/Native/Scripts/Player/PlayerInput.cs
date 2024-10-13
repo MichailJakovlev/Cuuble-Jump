@@ -4,54 +4,41 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Movement _movement;
     [SerializeField] private Spawner _spawner;
-    bool _isMobile = false;
+    [SerializeField] private LoseTracker _loseTracker;
+
+    bool _isNotMobile = true;
+    public bool _inputAllowed = true;
     int i;
 
     public void Awake()
     {
         if(Application.isMobilePlatform)
         {
-            _isMobile = true;
+            _isNotMobile = false;
         }
     }
 
     private void Update()
     {
-        if (Input.anyKeyDown && _isMobile == false)
+        if (Input.anyKeyDown && Input.GetAxisRaw("Horizontal") != 0 && _movement._isNotMoving && _inputAllowed && _isNotMobile)
         {
-            if (Input.GetAxisRaw("Horizontal") < 0 && _movement._isMoving == false)
-            {
-                Left();
-            }
-
-            if (Input.GetAxisRaw("Horizontal") > 0 && _movement._isMoving == false)
-            {
-                Right();
-            }
+            float _side = Input.GetAxisRaw("Horizontal");   
+            Jump(_side);
         }
     }
 
-    public void Left()
+    public void Jump(float side)
     {
+        _movement._isNotMoving = false;
+
         if (i > 7)
         {
             _spawner.Pull();
         }
 
-        _movement._isMoving = true;
-        StartCoroutine(_movement.JumpLeft());
+        StartCoroutine(_movement.Jump(side < 0 ? true : false));
         i++;
-    }
 
-    public void Right()
-    {
-        if (i > 7)
-        {
-            _spawner.Pull();
-        }
-
-        _movement._isMoving = true;
-        StartCoroutine(_movement.JumpRight());
-        i++;
+        _loseTracker.Check();
     }
 }

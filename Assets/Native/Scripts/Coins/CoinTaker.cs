@@ -14,7 +14,6 @@ public class CoinTaker : MonoBehaviour
     if (other.gameObject.CompareTag("Coin"))
     {
       _coinCounter.coins++;
-      print(_coinCounter.coins);
       _coinCounter.PlayerPrefsCoinsSet(_coinCounter.PlayerPrefsCoinsGet() + 1);
       other.gameObject.SetActive(false);
     }
