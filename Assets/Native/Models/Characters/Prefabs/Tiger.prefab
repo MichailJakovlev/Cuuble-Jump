@@ -54,7 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0a6b823d78dd1104f8f83d02bdb1145b, type: 2}
     - target: {fileID: 919132149155446097, guid: b917d2f6308c91f48b8be654925f240b, type: 3}
       propertyPath: m_Name
-      value: Animals-5
+      value: Tiger
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b917d2f6308c91f48b8be654925f240b, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b917d2f6308c91f48b8be654925f240b, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
