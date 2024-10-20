@@ -4,17 +4,18 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
+    [SerializeField] private Spawner _spawner;
     [SerializeField] private AnimationCurve _jumpStrenghtCurve;
     [SerializeField] private AnimationCurve _jumpDirectionAxisX;
     [SerializeField] private AnimationCurve _jumpDirectionAxisZ;
-    [SerializeField] private Spawner _spawner;
     [SerializeField] private float _animationTime;
 
     float _totalTime;
     float _currentTmie;
 
+    public bool _inputAllowed = true;
     public bool _isNotMoving = true;
-
+    
     public void Start()
     {
         _totalTime = _jumpStrenghtCurve.keys[_jumpStrenghtCurve.keys.Length - 1].time;
@@ -42,13 +43,23 @@ public class Movement : MonoBehaviour
             }
 
             _player.transform.position = pos;
-            _currentTmie += Time.fixedDeltaTime;
+            _currentTmie += Time.fixedDeltaTime * 1.5f;
 
-            yield return null;
+            yield return new WaitForSeconds(0.001f);
+        }
+        
+        if(side)
+        {
+            _player.transform.position = new Vector3(_player.transform.position.x, _jumpStrenghtCurve.Evaluate(_totalTime), _jumpDirectionAxisZ.Evaluate(_totalTime));
+        }
+        else
+        {
+            _player.transform.position = new Vector3(_jumpDirectionAxisX.Evaluate(_totalTime), _jumpStrenghtCurve.Evaluate(_totalTime), _player.transform.position.z);
         }
 
         _jumpStrenghtCurve = new AnimationCurve(new Keyframe(0, _player.transform.position.y), new Keyframe(_animationTime / 2, _player.transform.position.y + 1.5f), new Keyframe(_animationTime, _player.transform.position.y + 0.75f));
         _jumpDirectionAxisZ = new AnimationCurve(new Keyframe(0, _player.transform.position.z), new Keyframe(_animationTime, _player.transform.position.z - 1.5f));
+        
         _jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, _player.transform.position.x), new Keyframe(_animationTime, _player.transform.position.x - 1.5f));
         _isNotMoving = true;
     }

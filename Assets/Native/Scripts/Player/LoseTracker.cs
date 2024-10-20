@@ -43,7 +43,7 @@ public class LoseTracker : MonoBehaviour
         while (_losingAnimationTime > 0)
         {
             _losingAnimationTime -= Time.deltaTime;
-            yield return null;
+            yield return new WaitForSeconds(0.001f);
         }
         
         _lose.GameOver();
