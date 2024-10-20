@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,16 +9,21 @@ public class Spawner : MonoBehaviour
     [SerializeField] private List<Decoration> _decorationList;
     [SerializeField] private Coin _coin;
     [SerializeField] private LoseTracker _loseTracker;
+    [SerializeField] private AnimationCurve _curve;
     [SerializeField] private float _platformQuantity, _lateralDeviation, _verticalDeviation, _coinSpawnChance, _decorationSpawnChance;
     [SerializeField] private Vector3 _platformPosition, _leftDecorationPosition, _rightDecorationPosition;
+    
     private Decoration _leftDecoration, _rightDecoration;
+    private bool _isNotAnimating = true;
 
-    public Queue<Platform> _queuePlatforms;
+    private Queue<Platform> _queuePlatforms;
     private Queue<Decoration> _queueLeftDecorations;
     private Queue<Decoration> _queueRightDecorations;
     private Queue<Coin> _queueCoins;
 
-    float _angle = 0.7071068f;
+    private float _angle = 0.7071068f;
+    private float _currentTime;
+    private float _totalTime;
 
     private void Awake()
     {
@@ -27,6 +32,8 @@ public class Spawner : MonoBehaviour
         _queueRightDecorations = new Queue<Decoration>();
         _queueCoins = new Queue<Coin>();
         _loseTracker._queueDirection = new Queue<float>();
+
+        _totalTime = _curve.keys[_curve.keys.Length - 1].time;
 
         for (int i = 0; i < _platformQuantity; i++)
         {
@@ -40,7 +47,7 @@ public class Spawner : MonoBehaviour
             else
             {
                 PositionChanger(Random.value);
-                Create();
+                Create();              
                 ChanceChanger();
             }
 
@@ -50,16 +57,16 @@ public class Spawner : MonoBehaviour
 
     public void Pull()
     {
-        Get();
-        PositionChanger(Random.value);
+        if(_isNotAnimating)
+        {
+            Get();
+            PositionChanger(Random.value);
 
-        _platform.transform.position = _platformPosition;
-        _leftDecoration.transform.position = _leftDecorationPosition;
-        _rightDecoration.transform.position = _rightDecorationPosition;
-        _coin.transform.position = new Vector3(_platformPosition.x, _platformPosition.y + 0.8f, _platformPosition.z);
+            StartCoroutine(ObjectsAnimation());
 
-        ChanceChanger();
-        Realise();
+            ChanceChanger();
+            Realise();
+        }
     }
 
     private void Create()
@@ -90,7 +97,6 @@ public class Spawner : MonoBehaviour
 
     private void PositionChanger(float direction)
     {
-      
         if (direction < 0.5f)
         {
             _platformPosition = new Vector3(_platformPosition.x -= _lateralDeviation, _platformPosition.y += _verticalDeviation, _platformPosition.z);
@@ -106,7 +112,6 @@ public class Spawner : MonoBehaviour
             _rightDecorationPosition = new Vector3(_rightDecorationPosition.x, _rightDecorationPosition.y += _verticalDeviation, _rightDecorationPosition.z -= _lateralDeviation);
             _angle = 0;
         }
-        
     }
 
     private void ChanceChanger()
@@ -115,5 +120,33 @@ public class Spawner : MonoBehaviour
         _leftDecoration.gameObject.SetActive(Random.value < _decorationSpawnChance ? true : false);
         _rightDecoration.gameObject.SetActive(Random.value < _decorationSpawnChance ? true : false);
         _coin.gameObject.SetActive(Random.value < _coinSpawnChance ? true : false);
+    }
+
+    IEnumerator ObjectsAnimation()
+    {
+        _isNotAnimating = false;
+        _currentTime = 0;
+        var pos = transform.position.y;
+        while(_currentTime < _totalTime)
+        {
+            pos = _curve.Evaluate(_currentTime);  
+
+            _platform.transform.position = new Vector3(_platformPosition.x, pos, _platformPosition.z);
+            _leftDecoration.transform.position = new Vector3(_leftDecorationPosition.x, pos + 0.75f, _leftDecorationPosition.z);
+            _rightDecoration.transform.position = new Vector3(_rightDecorationPosition.x, pos + 0.75f, _rightDecorationPosition.z);
+            _coin.transform.position = new Vector3(_platformPosition.x, pos + 0.8f, _platformPosition.z);
+
+            _currentTime += Time.fixedDeltaTime;
+
+            yield return new WaitForSeconds(0.001f);
+        }
+        
+        _platform.transform.position = new Vector3(_platformPosition.x, _curve.Evaluate(_totalTime), _platformPosition.z);
+        _leftDecoration.transform.position = new Vector3(_leftDecorationPosition.x, _curve.Evaluate(_totalTime) + 0.75f, _leftDecorationPosition.z);
+        _rightDecoration.transform.position = new Vector3(_rightDecorationPosition.x, _curve.Evaluate(_totalTime) + 0.75f, _rightDecorationPosition.z);
+        _coin.transform.position = new Vector3(_platformPosition.x, _curve.Evaluate(_totalTime) + 0.8f, _platformPosition.z);
+
+        _curve = new AnimationCurve(new Keyframe(0, _platform.transform.position.y + 3f), new Keyframe(0.25f, _platform.transform.position.y + 0.75f));
+        _isNotAnimating = true;
     }
 }

@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 599139124}
   - component: {fileID: 599139123}
   - component: {fileID: 599139126}
+  - component: {fileID: 599139128}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -583,6 +584,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.5
   _player: {fileID: 1957886026}
+--- !u!23 &599139128
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599139122}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &985269765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5614549361263842402, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
@@ -767,6 +810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 852480331768806279, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -225.0617
+      objectReference: {fileID: 0}
     - target: {fileID: 1160399777155082737, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -822,6 +869,10 @@ PrefabInstance:
     - target: {fileID: 1846568967874849793, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
       propertyPath: _positionBottom.Value
       value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582075927071835261, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
+      propertyPath: m_text
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5111935276396481415, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
       propertyPath: m_IsActive
@@ -958,6 +1009,10 @@ PrefabInstance:
     - target: {fileID: 9143460134237066857, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 599139124}
+    - target: {fileID: 9143460134237066857, guid: 157a5130bb25d884d9ee4f93bf4fee33, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1002,6 +1057,30 @@ MonoBehaviour:
   - {fileID: 2482988930914991834, guid: 0d709271ab678294a9346e28f94c9191, type: 3}
   _coin: {fileID: -854278496403585216, guid: a61665f086cd8b34dbba45b02eea685d, type: 3}
   _loseTracker: {fileID: 1957886035}
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 15
+      inSlope: -12
+      outSlope: -12
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 12
+      inSlope: -12
+      outSlope: -12
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _platformQuantity: 15
   _lateralDeviation: 1.5
   _verticalDeviation: 0.75
@@ -1088,36 +1167,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1957886026}
+  _spawner: {fileID: 1610766308}
   _jumpStrenghtCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1.5
-      inSlope: 14.439609
-      outSlope: 14.439609
+      inSlope: 4.4087353
+      outSlope: 4.4087353
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.052679382
+      outWeight: 0.061762013
     - serializedVersion: 3
       time: 0.15
       value: 3
-      inSlope: 0.19553643
-      outSlope: 0.19553643
+      inSlope: 0.13194813
+      outSlope: 0.13194813
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.08242503
+      outWeight: 0.08810139
     - serializedVersion: 3
       time: 0.3
       value: 2.25
-      inSlope: -6.6013727
-      outSlope: -6.6013727
+      inSlope: -1.7999467
+      outSlope: -1.7999467
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07447779
-      outWeight: 0.07220715
+      inWeight: 0.085377574
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1169,8 +1249,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _spawner: {fileID: 1610766308}
-  _animationTime: 0.3
+  _animationTime: 0.25
+  _inputAllowed: 1
   _isNotMoving: 1
 --- !u!114 &1957886029
 MonoBehaviour:
@@ -6382,10 +6462,10 @@ SceneRoots:
   - {fileID: 458009422}
   - {fileID: 1417260917}
   - {fileID: 8494046451126872879}
-  - {fileID: 6718997988495220601}
   - {fileID: 1957886027}
+  - {fileID: 6718997988495220601}
   - {fileID: 1610766309}
+  - {fileID: 1309087985}
   - {fileID: 217997705}
   - {fileID: 201415362}
-  - {fileID: 1309087985}
   - {fileID: 7656369692264979442}

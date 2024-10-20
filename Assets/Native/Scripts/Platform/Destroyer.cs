@@ -16,7 +16,7 @@ public class Destroyer : MonoBehaviour
         while (_timer >= 0)
         {
             _timer -= Time.deltaTime;
-            yield return null;
+            yield return new WaitForSeconds(0.001f);
         }
 
         _timer = _startTime * 2;
@@ -31,8 +31,8 @@ public class Destroyer : MonoBehaviour
                 LosingStart?.Invoke();
             }
             platform.transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y - 0.1f, platform.transform.position.z);
-            
-            yield return null;
+
+            yield return new WaitForSeconds(0.001f);
         }
         _timer = _startTime;
     }
