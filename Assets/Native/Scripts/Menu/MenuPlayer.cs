@@ -6,14 +6,14 @@ public class MenuPlayer : MonoBehaviour
     [SerializeField] private SkinDataBase skinDB;
     [SerializeField] private Transform _parent;
 
-  void Start()
-  {
-      GetSkin();
-  }
+    void Start()
+    {
+        GetSkin();
+    }
 
     public void GetSkin()
     {
-        var skinModel = skinDB.skins.FirstOrDefault(m => m.name.ToString() == PlayerPrefs.GetString("SkinSelected"))?.skinModel;
+        var skinModel = skinDB.skins.FirstOrDefault(m => m.name.ToString() == PlayerPrefs.GetString("SkinSelected", "Cat"))?.skinModel;
         GameObject spawnedSkin = Instantiate(skinModel, new Vector3(0,0,0), transform.rotation);
         spawnedSkin.layer = LayerMask.NameToLayer("UI");
         spawnedSkin.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("UI");

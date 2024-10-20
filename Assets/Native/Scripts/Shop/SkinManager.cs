@@ -24,14 +24,12 @@ public class SkinManager : MonoBehaviour
 
     void Start()
     {
-        // PlayerPrefs.SetInt("coins", 10000);
         PlayerPrefs.GetString("SkinSelected", "Cat");
         unlockedSkins = PlayerPrefs.GetString("UnlockedSkins").Split(',').ToList();
         unlockedSkins.Add(skinDB.skins[0].name.ToString());
         PlayerPrefs.GetString("UnlockedSkins", "Cat");
         SpawnSkins(selectedOption);
         UpdateSkin(selectedOption);
-        print(skinDB.skins.FirstOrDefault(m => m.name.ToString() == PlayerPrefs.GetString("SkinSelected"))?.name.ToString());
     }
 
     public void NextOption()
@@ -95,13 +93,11 @@ public class SkinManager : MonoBehaviour
     {
         for (int i = 0; i < skinDB.SkinCount; i++)
         {
-            GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel,
-                new Vector3(-2.29999995f,-25.8999996f,-35.0999985f),
-                new Quaternion(-0.0558543317f,-0.33958146f,0.0260453075f,0.938555539f));
-
+            GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel);
             spawnedSkin.transform.SetParent(parent, false);
-            spawnedSkin.transform.localScale = new Vector3(40,40,40);
             spawnedSkin.SetActive(false);
+            spawnedSkin.layer = LayerMask.NameToLayer("Texture Renderer");
+            spawnedSkin.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Texture Renderer");
             if (selectedOption == i)
             {
                 spawnedSkin.SetActive(true);
