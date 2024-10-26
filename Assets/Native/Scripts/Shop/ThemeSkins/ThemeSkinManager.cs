@@ -5,9 +5,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkinManager : MonoBehaviour
+public class ThemeSkinManager : MonoBehaviour
 {
-    public SkinDataBase skinDB;
+    public ThemeSkinDB skinDB;
     public TextMeshProUGUI priceTMP;
     private int selectedOption = 0;
     public Transform parent;
@@ -58,7 +58,7 @@ public class SkinManager : MonoBehaviour
 
     private void UpdateSkin(int selectedOption)
     {
-        Skin skin = skinDB.GetSkin(selectedOption);
+        ThemeSkin skin = skinDB.GetSkin(selectedOption);
         priceTMP.text = skin.price.ToString();
         SetActiveSkins(selectedOption);
         SetActiveButton(defaultUnlockButton, new GameObject[] { reviewUnlockButton, selectButton, selectedItem });
@@ -93,7 +93,7 @@ public class SkinManager : MonoBehaviour
     {
         for (int i = 0; i < skinDB.SkinCount; i++)
         {
-            GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel);
+            GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel[0]);
             spawnedSkin.transform.SetParent(parent, false);
             spawnedSkin.SetActive(false);
             spawnedSkin.layer = LayerMask.NameToLayer("Texture Renderer");
@@ -116,7 +116,7 @@ public class SkinManager : MonoBehaviour
 
     public void UnlockSkinCoins()
     {
-        Skin skin = skinDB.GetSkin(selectedOption);
+        ThemeSkin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
         string result = string.Join(", ", unlockedSkins);
         PlayerPrefs.SetString("UnlockedSkins", result);
@@ -131,7 +131,7 @@ public class SkinManager : MonoBehaviour
     }
     public void UnlockSkinAd()
     {
-        Skin skin = skinDB.GetSkin(selectedOption);
+        ThemeSkin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
         string result = string.Join(", ", unlockedSkins);
         PlayerPrefs.SetString("UnlockedSkins", result);
@@ -141,7 +141,7 @@ public class SkinManager : MonoBehaviour
 
     public void UnlockSkinReview()
     {
-        Skin skin = skinDB.GetSkin(selectedOption);
+        ThemeSkin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
         string result = string.Join(", ", unlockedSkins);
         PlayerPrefs.SetString("UnlockedSkins", result);
@@ -149,7 +149,7 @@ public class SkinManager : MonoBehaviour
         IsUnlocked(skin);
     }
 
-    private void IsUnlocked(Skin skin)
+    private void IsUnlocked(ThemeSkin skin)
     {
         string unlocked = unlockedSkins.Find(m => m.Contains(skin.name.ToString()));
 
@@ -167,14 +167,14 @@ public class SkinManager : MonoBehaviour
 
     public void SelectSkin()
     {
-        Skin skin = skinDB.GetSkin(selectedOption);
+        ThemeSkin skin = skinDB.GetSkin(selectedOption);
         PlayerPrefs.SetString("SkinSelected", skin.name.ToString());
         PlayerPrefs.Save();
         _menuPlayer.GetSkin();
         _menuPlayer.DestroySkin();
         IsSelected(skin);
     }
-    private void IsSelected(Skin skin)
+    private void IsSelected(ThemeSkin skin)
     {
         selected = PlayerPrefs.GetString("SkinSelected", "Cat");
         if (selected == skin.name.ToString())

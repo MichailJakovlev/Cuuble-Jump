@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectMover : MonoBehaviour
 {
+  public RectTransform _canvas;
   public RectTransform _skinView;
   public GameObject _shopUI;
-  // [SerializeField] private AnimationCurve _curve;
   [SerializeField] float _speed = 10f;
 
   float currentTmie;
@@ -24,7 +24,7 @@ public class ObjectMover : MonoBehaviour
 
   public void MoveOutOfCanvas()
   {
-    Vector3 targetPosition = new (_skinView.localPosition.x, Screen.height / 2 + _skinView.rect.height, _skinView.localPosition.z);
+    Vector3 targetPosition = new (_skinView.localPosition.x, _canvas.rect.height + _skinView.rect.height * 2, _skinView.localPosition.z);
     StartCoroutine(MoveToTarget(_skinView, targetPosition));
     _shopUI.SetActive(true);
     StartCoroutine(SmoothAlpha(_shopUI));

@@ -8,9 +8,11 @@ public class LoseTracker : MonoBehaviour
     [SerializeField] private Spawner _spawner;
     [SerializeField] private PlayerInput _input;
     [SerializeField] private Lose _lose;
+    [SerializeField] private ScoreCounter _scoreCounter;
+    [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private float _losingAnimationTime;
     private float _currentDirection;
-    
+
     public Queue<float> _queueDirection;
 
     private void OnEnable()
@@ -29,7 +31,13 @@ public class LoseTracker : MonoBehaviour
         if(_currentDirection != _player.transform.rotation.y)
         {
             StartLose();
+            // _gameOverScreen
         }
+        else
+        {
+            _scoreCounter.Count();
+        }
+
     }
 
     public void StartLose()
@@ -45,7 +53,7 @@ public class LoseTracker : MonoBehaviour
             _losingAnimationTime -= Time.deltaTime;
             yield return new WaitForSeconds(0.001f);
         }
-        
+
         _lose.GameOver();
     }
 }
