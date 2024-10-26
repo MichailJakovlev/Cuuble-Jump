@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Coin
+  - Decoration
   layers:
   - Default
   - TransparentFX

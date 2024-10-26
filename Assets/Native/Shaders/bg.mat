@@ -44,7 +44,7 @@ Material:
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Time: 0
-    - _speedTime: 10
+    - _speedTime: 100
     - _timecycle: 0
     m_Colors: []
   m_BuildTextureStacks: []

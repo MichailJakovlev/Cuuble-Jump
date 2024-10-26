@@ -5,8 +5,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float smoothTime;
     [SerializeField] private GameObject _player;
     
-    private Transform target;
-    private Vector3 _offset;
+    public Transform target;
+    public Vector3 _offset;
     private Vector3 _currentVelocity = Vector3.zero;
 
     private void Start()

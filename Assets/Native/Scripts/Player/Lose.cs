@@ -4,7 +4,7 @@ public class Lose : MonoBehaviour
 {
     [SerializeField] private GameState _gameState;
     [SerializeField] private GameObject _gameOverMenu;
-    [SerializeField] private GameObject _popupScreen;
+    [SerializeField] public GameObject _popupScreen;
 
     public void GameOver()
     {
