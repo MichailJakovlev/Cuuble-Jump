@@ -1,5 +1,7 @@
 public enum ThemeSkins
 {
   Forest,
-  Gray
+  Japan,
+  Lava,
+  Danger
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    public static event Action LosingStart;
+    public static event Action<bool> LosingStart;
 
     [SerializeField] private float _timer;    
     float _startTime;
@@ -23,12 +23,12 @@ public class Destroyer : MonoBehaviour
 
         while (_timer >= 0 && platform.transform.position.y <= player.transform.position.y)
         {
-            _timer -= Time.deltaTime;
+            _timer -= Time.fixedDeltaTime;
             
             if (player.transform.position.y - platform.transform.position.y <= 1.6f)
             {
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.1f, player.transform.position.z);
-                LosingStart?.Invoke();
+                LosingStart?.Invoke(true);
             }
             platform.transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y - 0.1f, platform.transform.position.z);
 

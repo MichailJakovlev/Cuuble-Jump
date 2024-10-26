@@ -14,24 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skins:
   - skinModel:
-    - {fileID: 1784913739986884546, guid: b6b08756e7c4e424ca16939a071b5f37, type: 3}
-    - {fileID: 4020691275303657425, guid: 802ae22721775f641b5a4568850cb8c7, type: 3}
-    - {fileID: 1561598564482547563, guid: 3db3de06d6e438e4cbaa11532cba1719, type: 3}
-    - {fileID: 7649407213814429298, guid: 1b1bc670112327b40ba1cc7fc52952e1, type: 3}
-    - {fileID: 8300313011768266691, guid: 0d709271ab678294a9346e28f94c9191, type: 3}
-    - {fileID: 8861988388922407687, guid: 733d34137a2a12642a3012887d9802be, type: 3}
+    - {fileID: 6992843812567460950, guid: d2e8b77f1a37ddc41a9c2930af54b18f, type: 3}
+    - {fileID: 5661675998218040692, guid: c9354d6b4ae04dd48819f7fe9626ef80, type: 3}
+    - {fileID: 2814197369325296204, guid: f8fd37f7e8c2eb44a81a874941837c26, type: 3}
+    - {fileID: 3297654913521348576, guid: 31cd4ba1f0786ca40847ed0bed58a420, type: 3}
+    - {fileID: 5423290090856564275, guid: 9c14e9644533d7e48964141b93251731, type: 3}
+    - {fileID: 6522721338095282109, guid: 58e89dc15eaea4a49b0d70a57e894513, type: 3}
     name: 0
     price: 0
     isDefault: 1
     isReview: 0
   - skinModel:
-    - {fileID: 919132149155446097, guid: 40e1060d94f64934587efa31e80bcb96, type: 3}
-    - {fileID: 919132149155446097, guid: 8e4874d979aff504ab4d61c8d8cab9b9, type: 3}
-    - {fileID: 919132149155446097, guid: 4973371a35bc61945baa349853b981dd, type: 3}
-    - {fileID: 919132149155446097, guid: 63767ae45f59a944985e35669c631628, type: 3}
-    - {fileID: 919132149155446097, guid: 95ff3aca514996349a85f38b43e43109, type: 3}
-    - {fileID: 919132149155446097, guid: c1a0c5414d3d4874cb92b24549c4b7d1, type: 3}
+    - {fileID: 2406441042767237168, guid: 78a6262e33188424bb4098ae1d6b83cc, type: 3}
+    - {fileID: 2701781071988445465, guid: 00ce663ea41c0804eaab8418a1dbad00, type: 3}
+    - {fileID: 9024578497363133555, guid: 5f8ca439c9977fd49b0510a6426bb911, type: 3}
+    - {fileID: 3516647190582088378, guid: 30e9eb9705892ff4d9638937a9eb66b6, type: 3}
+    - {fileID: 5958741011189875009, guid: 2e0b702c6dec66e41936b02b861968e4, type: 3}
+    - {fileID: 6522721338095282109, guid: 58e89dc15eaea4a49b0d70a57e894513, type: 3}
     name: 0
-    price: 200
-    isDefault: 0
+    price: 0
+    isDefault: 1
+    isReview: 0
+  - skinModel:
+    - {fileID: 7086685150288259542, guid: a9890dd304116bc499e717f92ec6987f, type: 3}
+    - {fileID: 7500792011355322461, guid: 4b286198d60a350419266e377fcf43ac, type: 3}
+    - {fileID: 4612825374825516295, guid: 8cde8d8ab6d1fb64da740e2fd0d49d61, type: 3}
+    - {fileID: 5601074999182611022, guid: 6b95d2379069e714abad4f0dc880afa7, type: 3}
+    - {fileID: 8382719532282430398, guid: 6e0ca9749e1a9314890ec0b4bc6f1e62, type: 3}
+    - {fileID: 322301980355060428, guid: cd8f6400dc0dc604f92844796348c778, type: 3}
+    name: 0
+    price: 0
+    isDefault: 1
+    isReview: 0
+  - skinModel:
+    - {fileID: 5249504773319687283, guid: f889da9bda0db8e4db6055917cd26ca8, type: 3}
+    - {fileID: 932064005633276149, guid: cfee00bfb96e72b43a2f1bcb4b611a87, type: 3}
+    - {fileID: 4407088820273614367, guid: f5d9119d95cb7094c801f065c4fc4fb7, type: 3}
+    - {fileID: 4552424466319366800, guid: 942cf1655bd877047b559beeb326c5c3, type: 3}
+    - {fileID: 6426213734830612529, guid: b52787b26f11e1547b9dadfc7fb6cd0d, type: 3}
+    - {fileID: 322301980355060428, guid: cd8f6400dc0dc604f92844796348c778, type: 3}
+    name: 0
+    price: 0
+    isDefault: 1
     isReview: 0

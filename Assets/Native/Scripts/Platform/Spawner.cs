@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour
         _queueRightDecorations = new Queue<Decoration>();
         _queueCoins = new Queue<Coin>();
         _loseTracker._queueDirection = new Queue<float>();
+        _loseTracker._queueDecorationCollision = new Queue<int>();
 
         _totalTime = _curve.keys[_curve.keys.Length - 1].time;
 
@@ -120,6 +121,19 @@ public class Spawner : MonoBehaviour
         _leftDecoration.gameObject.SetActive(Random.value < _decorationSpawnChance ? true : false);
         _rightDecoration.gameObject.SetActive(Random.value < _decorationSpawnChance ? true : false);
         _coin.gameObject.SetActive(Random.value < _coinSpawnChance ? true : false);
+
+        if (_leftDecoration.isActiveAndEnabled)
+        {
+            _loseTracker._queueDecorationCollision.Enqueue(-1);
+        }
+        else if(_rightDecoration.isActiveAndEnabled)
+        {
+            _loseTracker._queueDecorationCollision.Enqueue(1);
+        }
+        else
+        {
+            _loseTracker._queueDecorationCollision.Enqueue(0);
+        }
     }
 
     IEnumerator ObjectsAnimation()
