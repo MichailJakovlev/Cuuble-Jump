@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Platform _platform;
-    [SerializeField] private List<Decoration> _decorationList;
+    [SerializeField] private ThemeSkinDB _themeSkinDB;
     [SerializeField] private Coin _coin;
     [SerializeField] private LoseTracker _loseTracker;
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private float _platformQuantity, _lateralDeviation, _verticalDeviation, _coinSpawnChance, _decorationSpawnChance;
     [SerializeField] private Vector3 _platformPosition, _leftDecorationPosition, _rightDecorationPosition;
-    
+
     private Decoration _leftDecoration, _rightDecoration;
     private bool _isNotAnimating = true;
 
@@ -21,12 +21,27 @@ public class Spawner : MonoBehaviour
     private Queue<Decoration> _queueRightDecorations;
     private Queue<Coin> _queueCoins;
 
+    private Platform _platform;
+    private List<Decoration> _decorationList;
+    private List<Decoration> skinModelsCopy;
+
     private float _angle = 0.7071068f;
     private float _currentTime;
     private float _totalTime;
 
     private void Awake()
     {
+        var skinModels = _themeSkinDB.skins.FirstOrDefault(m => m.name.ToString() == PlayerPrefs.GetString("ThemeSelected", "Forest"))?.skinModel;
+
+        _platform = skinModels[0].GetComponent<Platform>();
+
+        Instantiate(_platform);
+
+        skinModelsCopy = skinModels.Select(item => item.GetComponent<Decoration>()).ToList();
+        skinModelsCopy.Remove(skinModelsCopy[0]);
+
+        _decorationList = skinModelsCopy.OfType<Decoration>().ToList();
+
         _queuePlatforms = new Queue<Platform>();
         _queueLeftDecorations = new Queue<Decoration>();
         _queueRightDecorations = new Queue<Decoration>();
@@ -48,7 +63,7 @@ public class Spawner : MonoBehaviour
             else
             {
                 PositionChanger(Random.value);
-                Create();              
+                Create();
                 ChanceChanger();
             }
 
@@ -143,7 +158,7 @@ public class Spawner : MonoBehaviour
         var pos = transform.position.y;
         while(_currentTime < _totalTime)
         {
-            pos = _curve.Evaluate(_currentTime);  
+            pos = _curve.Evaluate(_currentTime);
 
             _platform.transform.position = new Vector3(_platformPosition.x, pos, _platformPosition.z);
             _leftDecoration.transform.position = new Vector3(_leftDecorationPosition.x, pos + 0.75f, _leftDecorationPosition.z);
@@ -154,7 +169,7 @@ public class Spawner : MonoBehaviour
 
             yield return new WaitForSeconds(0.001f);
         }
-        
+
         _platform.transform.position = new Vector3(_platformPosition.x, _curve.Evaluate(_totalTime), _platformPosition.z);
         _leftDecoration.transform.position = new Vector3(_leftDecorationPosition.x, _curve.Evaluate(_totalTime) + 0.75f, _leftDecorationPosition.z);
         _rightDecoration.transform.position = new Vector3(_rightDecorationPosition.x, _curve.Evaluate(_totalTime) + 0.75f, _rightDecorationPosition.z);

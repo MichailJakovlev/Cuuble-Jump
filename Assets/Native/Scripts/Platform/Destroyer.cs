@@ -6,7 +6,7 @@ public class Destroyer : MonoBehaviour
 {
     public static event Action<bool> LosingStart;
 
-    [SerializeField] private float _timer;    
+    [SerializeField] private float _timer;
     float _startTime;
 
     public IEnumerator Package(GameObject platform, GameObject player)
@@ -24,7 +24,7 @@ public class Destroyer : MonoBehaviour
         while (_timer >= 0 && platform.transform.position.y <= player.transform.position.y)
         {
             _timer -= Time.fixedDeltaTime;
-            
+
             if (player.transform.position.y - platform.transform.position.y <= 1.6f)
             {
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.1f, player.transform.position.z);

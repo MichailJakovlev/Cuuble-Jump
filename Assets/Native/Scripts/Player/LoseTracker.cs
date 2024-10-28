@@ -9,7 +9,6 @@ public class LoseTracker : MonoBehaviour
     [SerializeField] private PlayerInput _input;
     [SerializeField] private Lose _lose;
     [SerializeField] private ScoreCounter _scoreCounter;
-    [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private float _losingAnimationTime, _fallingTime;
     private float _currentDirection;
@@ -35,7 +34,6 @@ public class LoseTracker : MonoBehaviour
 
         if(_currentDirection != _player.transform.rotation.y)
         {
-            // _gameOverScreen
             if(_currentDirection == 0 && _collison > 0 || _currentDirection == 0.7071068f && _collison < 0)
             {
                 StartLose(true);

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class ThemeSkinManager : MonoBehaviour
     public TextMeshProUGUI priceTMP;
     private int selectedOption = 0;
     public Transform parent;
+    public GameObject PackPrefab;
 
     public GameObject defaultUnlockButton;
     public GameObject reviewUnlockButton;
@@ -18,16 +20,16 @@ public class ThemeSkinManager : MonoBehaviour
     public GameObject selectedItem;
     public Button coinsButton;
     public TMPMenuCoins _menuCoins;
-    public MenuPlayer _menuPlayer;
+    public MenuTheme _menuTheme;
     private List<string> unlockedSkins = new();
     private string selected;
 
     void Start()
     {
-        PlayerPrefs.GetString("SkinSelected", "Cat");
-        unlockedSkins = PlayerPrefs.GetString("UnlockedSkins").Split(',').ToList();
+        PlayerPrefs.GetString("ThemeSelected", "Forest");
+        unlockedSkins = PlayerPrefs.GetString("UnlockedThemes").Split(',').ToList();
         unlockedSkins.Add(skinDB.skins[0].name.ToString());
-        PlayerPrefs.GetString("UnlockedSkins", "Cat");
+        PlayerPrefs.GetString("UnlockedThemes", "Forest");
         SpawnSkins(selectedOption);
         UpdateSkin(selectedOption);
     }
@@ -93,11 +95,16 @@ public class ThemeSkinManager : MonoBehaviour
     {
         for (int i = 0; i < skinDB.SkinCount; i++)
         {
-            GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel[0]);
+            GameObject spawnedSkin = Instantiate(PackPrefab);
             spawnedSkin.transform.SetParent(parent, false);
             spawnedSkin.SetActive(false);
-            spawnedSkin.layer = LayerMask.NameToLayer("Texture Renderer");
-            spawnedSkin.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Texture Renderer");
+            for (int j = 0; j < skinDB.skins[i].skinModel.Count; j++)
+            {
+                GameObject spawnedModel = Instantiate(skinDB.skins[i].skinModel[j]);
+                spawnedModel.transform.SetParent(spawnedSkin.transform.GetChild(j), false);
+                spawnedModel.layer = LayerMask.NameToLayer("Theme View");
+                spawnedModel.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Theme View");
+            }
             if (selectedOption == i)
             {
                 spawnedSkin.SetActive(true);
@@ -119,7 +126,7 @@ public class ThemeSkinManager : MonoBehaviour
         ThemeSkin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
         string result = string.Join(", ", unlockedSkins);
-        PlayerPrefs.SetString("UnlockedSkins", result);
+        PlayerPrefs.SetString("UnlockedThemes", result);
         PlayerPrefs.Save();
         int skinPrice = skin.price;
         if (PlayerPrefs.GetInt("coins") >= skinPrice)
@@ -134,7 +141,7 @@ public class ThemeSkinManager : MonoBehaviour
         ThemeSkin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
         string result = string.Join(", ", unlockedSkins);
-        PlayerPrefs.SetString("UnlockedSkins", result);
+        PlayerPrefs.SetString("UnlockedThemes", result);
         PlayerPrefs.Save();
         IsUnlocked(skin);
     }
@@ -144,7 +151,7 @@ public class ThemeSkinManager : MonoBehaviour
         ThemeSkin skin = skinDB.GetSkin(selectedOption);
         unlockedSkins.Add(skin.name.ToString());
         string result = string.Join(", ", unlockedSkins);
-        PlayerPrefs.SetString("UnlockedSkins", result);
+        PlayerPrefs.SetString("UnlockedThemes", result);
         PlayerPrefs.Save();
         IsUnlocked(skin);
     }
@@ -168,15 +175,15 @@ public class ThemeSkinManager : MonoBehaviour
     public void SelectSkin()
     {
         ThemeSkin skin = skinDB.GetSkin(selectedOption);
-        PlayerPrefs.SetString("SkinSelected", skin.name.ToString());
+        PlayerPrefs.SetString("ThemeSelected", skin.name.ToString());
         PlayerPrefs.Save();
-        _menuPlayer.GetSkin();
-        _menuPlayer.DestroySkin();
+        _menuTheme.GetSkin();
+        _menuTheme.DestroySkin();
         IsSelected(skin);
     }
     private void IsSelected(ThemeSkin skin)
     {
-        selected = PlayerPrefs.GetString("SkinSelected", "Cat");
+        selected = PlayerPrefs.GetString("ThemeSelected", "Forest");
         if (selected == skin.name.ToString())
         {
             SetActiveButton(selectedItem, new GameObject[] { reviewUnlockButton, defaultUnlockButton, selectButton });

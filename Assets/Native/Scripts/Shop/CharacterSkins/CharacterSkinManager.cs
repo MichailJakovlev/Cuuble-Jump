@@ -96,8 +96,8 @@ public class CharacterSkinManager : MonoBehaviour
             GameObject spawnedSkin = Instantiate(skinDB.skins[i].skinModel);
             spawnedSkin.transform.SetParent(parent, false);
             spawnedSkin.SetActive(false);
-            spawnedSkin.layer = LayerMask.NameToLayer("Texture Renderer");
-            spawnedSkin.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Texture Renderer");
+            spawnedSkin.layer = LayerMask.NameToLayer("Skin View");
+            spawnedSkin.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Skin View");
             if (selectedOption == i)
             {
                 spawnedSkin.SetActive(true);
