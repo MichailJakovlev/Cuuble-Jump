@@ -5,6 +5,18 @@ public class UIManager : MonoBehaviour
     public GameObject _stopSoundButton;
     public GameObject _startSoundButton;
 
+    void Start()
+    {
+        if (PlayerPrefs.GetInt("Volume", 1) == 1)
+        {
+            EnableSoundButton();
+        }
+        else
+        {
+            DisableSoundButton();
+        }
+    }
+
     public void DisableSoundButton()
     {
         _stopSoundButton.SetActive(false);

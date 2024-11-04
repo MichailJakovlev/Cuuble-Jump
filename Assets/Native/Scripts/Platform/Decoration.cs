@@ -1,6 +1,3 @@
 using UnityEngine;
-public class Decoration : MonoBehaviour
-{
-    
-}
- 
+
+public class Decoration : MonoBehaviour { }

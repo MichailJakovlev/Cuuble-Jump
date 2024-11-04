@@ -4,27 +4,29 @@ public class GameState : MonoBehaviour
 {
     public YandexManager _yandexManager;
     public AudioState _audioState;
-    
-    private bool _isGameReady = false;
+
+    // private bool _isGameReady = false;
 
     // Game States managment
     public void StopGame()
     {
-        _yandexManager.StopGame();
-        _audioState.StopSounds();
+        // _yandexManager.StopGame();
+        // _audioState.StopSounds();
+        _audioState.StopMusic();
         Time.timeScale = 0;
     }
 
     public void StartGame()
     {
-        if (_isGameReady == false)
-        {
-            _yandexManager.ReadyGame();
-            _isGameReady = true;
-        }
+        // if (_isGameReady == false)
+        // {
+        //     _yandexManager.ReadyGame();
+        //     _isGameReady = true;
+        // }
 
-        _yandexManager.StartGame();
-        _audioState.StartSounds();
+        // _yandexManager.StartGame();
+        // _audioState.StartSounds();
+        _audioState.StartMusic();
         Time.timeScale = 1;
     }
 
