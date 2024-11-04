@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Movement _movement;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private LoseTracker _loseTracker;
+    [SerializeField] private GameObject _player;
 
     public bool _inputAllowed = true;
     bool _isNotMobile = true;
@@ -48,6 +49,11 @@ public class PlayerInput : MonoBehaviour
         if(_movement._isNotMoving && _inputAllowed)
         {
             _movement._isNotMoving = false;
+
+            if(i == 0)
+            {
+                _player.GetComponent<BoxCollider>().enabled = true;
+            }
 
             if (i > 7)
             {

@@ -67,6 +67,8 @@ public class Spawner : MonoBehaviour
                 ChanceChanger();
             }
 
+            
+
             Realise();
         }
     }
