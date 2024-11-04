@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Skin
+public class CharacterSkin
 {
     public GameObject skinModel;
     public CharacterSkins name;

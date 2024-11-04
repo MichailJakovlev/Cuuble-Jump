@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] private SkinDataBase skinDB;
+    [SerializeField] private CharacterSkinDB skinDB;
     [SerializeField] private Transform _parent;
 
     void Start()

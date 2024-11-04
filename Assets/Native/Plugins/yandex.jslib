@@ -1,14 +1,14 @@
 mergeInto(LibraryManager.library, {
   
-    SendGameReady: function() {
+    SendGameReady : function() {
       YaGames.init()
       .then((ysdk) => {
         ysdk.features.LoadingAPI.ready()
-    })
-    .catch(console.error);
+      })
+      .catch(console.error);
     },
   
-    SendGameStart: function() {
+    SendGameStart : function() {
       try {
         ysdk.features.GameplayAPI.start()
       } catch(err) {
@@ -16,15 +16,15 @@ mergeInto(LibraryManager.library, {
       }
     },
   
-    SendGameStop: function() {
+    SendGameStop : function() {
       try {
         ysdk.features.GameplayAPI.stop()
       } catch(err) {
         console.error;
       }
     },
-  
-    GetLang: function () {
+
+    GetLang : function () {
       try {
         var lang = ysdk.environment.i18n.lang;
         var bufferSize = lengthBytesUTF8(lang) + 1;
@@ -41,7 +41,21 @@ mergeInto(LibraryManager.library, {
         console.log('NAVIGATOR', buffer);
         return buffer;
       }
-      },
+    },
+
+    CallRateGame : function() {
+        ysdk.feedback.canReview()
+          .then(({ value, reason }) => {
+              if (value) {
+                  ysdk.feedback.requestReview()
+                      .then(({ feedbackSent }) => {
+                          gameInstance.SendMessage('YandexManager', 'GetRatedAward');
+                      })
+              } else {
+                  console.log(reason)
+              }
+          })
+    },
   
     ShowAd : function(){
       ysdk.adv.showFullscreenAdv({
@@ -51,9 +65,10 @@ mergeInto(LibraryManager.library, {
           },
           onError: function(error) {
           }
-      }
-  })
-  },
+        }
+      })
+    },
+    
     ShowReward : function(){
       ysdk.adv.showRewardedVideo({
       callbacks: {
@@ -71,7 +86,23 @@ mergeInto(LibraryManager.library, {
           onError: (e) => {
             console.log('Error while open video ad:', e);
           }
-      }
-  })
-  },
+        }
+      })
+    },
+
+    SetScoreLeaderboard: function(record){
+      ysdk.getLeaderboards()
+        .then(lb => {
+          lb.setLeaderboardScore("leaderboard", record);
+          console.log('Leaderboard was update', record);
+      })
+    },
+
+    GetScoreLeaderboard: function(){
+      ysdk.getLeaderboards()
+        .then(lb => {
+          lb.getLeaderboardEntries('leaderboard', { quantityTop: 10, includeUser: true, quantityAround: 3 })
+            .then(res => console.log(res));
+      })
+    },
   });
