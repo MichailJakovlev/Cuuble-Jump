@@ -1,32 +1,25 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
-    [SerializeField]
-    private ScoreSaver _scoreSaver;
+    [SerializeField] private ScoreSaver _scoreSaver;
 
-    [SerializeField]
-    private ScoreCounter _scoreCounter;
+    [SerializeField] private ScoreCounter _scoreCounter;
 
-    [SerializeField]
-    private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
-    [SerializeField]
-    private TextMeshProUGUI _recordText;
+    [SerializeField] private TextMeshProUGUI _recordText;
 
-    [SerializeField]
-    private TextMeshProUGUI _newRecordText;
+    [SerializeField] private TextMeshProUGUI _newRecordText;
 
-    [SerializeField]
-    private GameObject _defeatScreen;
+    [SerializeField] private GameObject _defeatScreen;
 
-    [SerializeField]
-    private GameObject _newRecord;
+    [SerializeField] private GameObject _newRecord;
 
-    [SerializeField]
-    private AudioState _audioState;
+    [SerializeField] private AudioState _audioState;
+
+    [SerializeField] private Leaderboard _leaderboard;
 
     void Start()
     {
@@ -40,6 +33,7 @@ public class GameOverScreen : MonoBehaviour
             _newRecordText.text = _scoreCounter.score.ToString();
             PlayerPrefs.SetInt("Record", _scoreCounter.score);
             PlayerPrefs.Save();
+            _leaderboard.SetPlayerScore(_scoreCounter.score);
         }
         else
         {
