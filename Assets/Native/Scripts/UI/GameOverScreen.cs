@@ -3,29 +3,18 @@ using UnityEngine;
 
 public class GameOverScreen : MonoBehaviour
 {
-    [SerializeField] private ScoreSaver _scoreSaver;
-
     [SerializeField] private ScoreCounter _scoreCounter;
-
     [SerializeField] private TextMeshProUGUI _scoreText;
-
     [SerializeField] private TextMeshProUGUI _recordText;
-
     [SerializeField] private TextMeshProUGUI _newRecordText;
-
     [SerializeField] private GameObject _defeatScreen;
-
     [SerializeField] private GameObject _newRecord;
-
     [SerializeField] private AudioState _audioState;
-
     [SerializeField] private Leaderboard _leaderboard;
 
     void Start()
     {
-        _scoreSaver.Save();
-
-        if (PlayerPrefs.GetInt("Score", 0) > PlayerPrefs.GetInt("Record", 0))
+        if (_scoreCounter.score > PlayerPrefs.GetInt("Record", 0))
         {
             _audioState.PlayNewRecordSound();
             _newRecord.SetActive(true);
