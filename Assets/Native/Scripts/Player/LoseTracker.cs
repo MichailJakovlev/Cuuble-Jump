@@ -36,7 +36,7 @@ public class LoseTracker : MonoBehaviour
 
         if (_currentDirection != _player.transform.rotation.y)
         {
-            if (_currentDirection == 0 && _collison > 0 || _currentDirection == 0.7071068f && _collison < 0)
+            if (_currentDirection == 0 && _collison == 1 || _currentDirection == 0.7071068f && _collison == -1 || _collison == 2)
             {
                 Instantiate(_deadParticles, _player.transform.position, _player.transform.rotation);
                 _player.transform.GetChild(0).gameObject.SetActive(false);

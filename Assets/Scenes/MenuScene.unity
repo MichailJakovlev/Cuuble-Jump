@@ -3210,7 +3210,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687104781}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 388602b1a3d28fc4687853436338e28c, type: 3}
   m_Name: 
@@ -3662,9 +3662,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1626665239}
-        m_TargetAssemblyTypeName: ThemeSkinManager, Assembly-CSharp
-        m_MethodName: UnlockSkinAd
+      - m_Target: {fileID: 1780617575}
+        m_TargetAssemblyTypeName: YandexManager, Assembly-CSharp
+        m_MethodName: ShowRewardAd
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1384855009}
+        m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3676,7 +3688,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1384855009}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
-        m_MethodName: PlayButtonClickSound
+        m_MethodName: StopMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7006,7 +7018,7 @@ GameObject:
   - component: {fileID: 1384855010}
   - component: {fileID: 1384855009}
   m_Layer: 0
-  m_Name: StateManager
+  m_Name: GameState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7631,7 +7643,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7650,7 +7662,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1384855009}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
-        m_MethodName: PlayButtonClickSound
+        m_MethodName: StopMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7714,7 +7726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1780617575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7729,7 +7741,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _languageText: {fileID: 687104784}
   _gameState: {fileID: 1384855011}
-  _characterSkinManager: {fileID: 474298057}
   _currentLanguage: 
 --- !u!4 &1780617576
 Transform:

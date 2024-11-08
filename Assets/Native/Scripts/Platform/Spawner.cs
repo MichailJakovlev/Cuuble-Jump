@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private float _platformQuantity, _lateralDeviation, _verticalDeviation, _coinSpawnChance, _decorationSpawnChance;
     [SerializeField] private Vector3 _platformPosition, _leftDecorationPosition, _rightDecorationPosition;
+    [SerializeField] private Movement _movement;
 
     private Decoration _leftDecoration, _rightDecoration;
     private bool _isNotAnimating = true;
@@ -26,7 +27,6 @@ public class Spawner : MonoBehaviour
     private List<Decoration> skinModelsCopy;
 
     private float _angle = 0.7071068f;
-    private float _currentTime;
     private float _totalTime;
 
     private void Awake()
@@ -67,8 +67,6 @@ public class Spawner : MonoBehaviour
                 ChanceChanger();
             }
 
-            
-
             Realise();
         }
     }
@@ -79,9 +77,6 @@ public class Spawner : MonoBehaviour
         {
             Get();
             PositionChanger(Random.value);
-
-            StartCoroutine(ObjectsAnimation());
-
             ChanceChanger();
             Realise();
         }
@@ -132,14 +127,18 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void ChanceChanger()
+    private void ChanceChanger()    
     {
         _platform.gameObject.SetActive(true);
         _leftDecoration.gameObject.SetActive(Random.value < _decorationSpawnChance ? true : false);
         _rightDecoration.gameObject.SetActive(Random.value < _decorationSpawnChance ? true : false);
         _coin.gameObject.SetActive(Random.value < _coinSpawnChance ? true : false);
 
-        if (_leftDecoration.isActiveAndEnabled)
+        if(_leftDecoration.isActiveAndEnabled && _rightDecoration.isActiveAndEnabled)
+        {
+            _loseTracker._queueDecorationCollision.Enqueue(2);
+        }
+        else if(_leftDecoration.isActiveAndEnabled)
         {
             _loseTracker._queueDecorationCollision.Enqueue(-1);
         }
@@ -153,21 +152,19 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    IEnumerator ObjectsAnimation()
+    public IEnumerator ObjectsAnimation()
     {
         _isNotAnimating = false;
-        _currentTime = 0;
+
         var pos = transform.position.y;
-        while(_currentTime < _totalTime)
+        while(_movement._currentTime < _totalTime)
         {
-            pos = _curve.Evaluate(_currentTime);
+            pos = _curve.Evaluate(_movement._currentTime);
 
             _platform.transform.position = new Vector3(_platformPosition.x, pos, _platformPosition.z);
             _leftDecoration.transform.position = new Vector3(_leftDecorationPosition.x, pos + 0.75f, _leftDecorationPosition.z);
             _rightDecoration.transform.position = new Vector3(_rightDecorationPosition.x, pos + 0.75f, _rightDecorationPosition.z);
             _coin.transform.position = new Vector3(_platformPosition.x, pos + 0.8f, _platformPosition.z);
-
-            _currentTime += Time.fixedDeltaTime;
 
             yield return new WaitForSeconds(0.001f);
         }

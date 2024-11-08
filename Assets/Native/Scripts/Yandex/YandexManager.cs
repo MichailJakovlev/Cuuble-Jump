@@ -24,21 +24,30 @@ public class YandexManager : MonoBehaviour
     public static extern void ShowAd();
 
     [DllImport("__Internal")]
-    public static extern void ShowReward();
+    public static extern void ShowReward(int num);
 
     [SerializeField] TextMeshProUGUI _languageText;
     [SerializeField] private GameState _gameState;
-    [SerializeField] private CharacterSkinManager _characterSkinManager;
-   // [SerializeField] private ThemeSkinManager _themeSkinManager;
+    private CharacterSkinManager _characterSkinManager;
+    private ThemeSkinManager _themeSkinManager;
 
     public string _currentLanguage;
-    bool _isRewarded = false;
+    private bool _isGameReady = false;
 
     public void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             ShowFullscreenAd();
+
+            _characterSkinManager = GameObject.Find("Current Skin").GetComponent<CharacterSkinManager>();
+            _themeSkinManager = GameObject.Find("Current Theme").GetComponent<ThemeSkinManager>();
+
+            if (_isGameReady == false)
+            {
+                ReadyGame();
+                _isGameReady = true;
+            }
         }
     }
 
@@ -61,9 +70,9 @@ public class YandexManager : MonoBehaviour
     // Languages managment
     public static YandexManager _instance;
 
-  //  private void Awake()
+   // private void Awake()
    // {
-       // if (_instance == null)
+     //   if (_instance == null)
        // {
          //   _instance = this;
            // DontDestroyOnLoad(gameObject);
@@ -75,7 +84,7 @@ public class YandexManager : MonoBehaviour
        // {
          //   Destroy(gameObject);
        // }
-   // }
+    //}
 
     // Rate game managment
     public void RateGame()
@@ -95,40 +104,30 @@ public class YandexManager : MonoBehaviour
         ShowAd();
     }
 
-    public void ShowRewardAd(int number)
+    public void ShowRewardAd(int num)
     {
         _gameState.StopGame();
-        ShowReward();
-        GetAdAward(number);
+        ShowReward(num);
     }
 
-    public void Rewarded()
+    public void Rewarded(int num)
     {
         _gameState.StartGame();
-        _characterSkinManager.UnlockSkinAd();
-        _isRewarded = true;
-    }
 
-    public void GetAdAward(int number)
-    {
-        if(_isRewarded)
+        switch (num)
         {
-            switch(number)
-            {
-                case 0:
-                    // Character
-                    break;
-                case 1:
-                  //  _themeSkinManager.UnlockSkinAd();
-                    break;
-                case 2:
-                    // Add double coins method;
-                    break;
-                case 3:
-                    //Add continue game method;
-                    break;
-            }
+            case 1:
+                _characterSkinManager.UnlockSkinAd();
+                break;
+            case 2:
+                _themeSkinManager.UnlockSkinAd();
+                break;
+            case 3:
+                //Double coins method
+                break;
+            case 4:
+                //Rebirth player method
+                break;
         }
-        _isRewarded = false;
     }
 }
