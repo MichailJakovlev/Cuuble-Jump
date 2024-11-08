@@ -7,6 +7,7 @@ public class ObjectMover : MonoBehaviour
     public RectTransform _canvas;
     public RectTransform _skinView;
     public GameObject _shopUI;
+    public GameObject _leaderboardUI;
 
     [SerializeField]
     float _speed = 10f;
@@ -25,7 +26,7 @@ public class ObjectMover : MonoBehaviour
     //   MoveOutOfCanvas();
     // }
 
-    public void MoveOutOfCanvas()
+    public void MoveOutOfCanvasShop()
     {
         Vector3 targetPosition =
             new(
@@ -36,6 +37,19 @@ public class ObjectMover : MonoBehaviour
         StartCoroutine(MoveToTarget(_skinView, targetPosition));
         _shopUI.SetActive(true);
         StartCoroutine(SmoothAlpha(_shopUI));
+    }
+
+    public void MoveOutOfCanvasLeaderboard()
+    {
+        Vector3 targetPosition =
+            new(
+                _skinView.localPosition.x,
+                _canvas.rect.height + _skinView.rect.height * 2,
+                _skinView.localPosition.z
+            );
+        StartCoroutine(MoveToTarget(_skinView, targetPosition));
+        _leaderboardUI.SetActive(true);
+        StartCoroutine(SmoothAlpha(_leaderboardUI));
     }
 
     public void MoveToCanvas()

@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -21,11 +21,10 @@ public class Leaderboard : MonoBehaviour
         public int score;
     }
 
-    TestPlayer player = new TestPlayer() { name = "Michail Jakovlev", score = 35};
-   
+    TestPlayer player = new TestPlayer() { name = "Valera", score = 35};
     public void OpenLeaderboard()
     {
-        _leaderboardPanel.SetActive(true);
+        // _leaderboardPanel.SetActive(true);
         string playerJson = JsonUtility.ToJson(player);
         Debug.Log(playerJson);
 
