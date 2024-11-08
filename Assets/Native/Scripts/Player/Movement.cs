@@ -11,7 +11,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _animationTime;
 
     float _totalTime;
-    float _currentTmie;
+    public float _currentTime;
+    int i = 0;
 
     public bool _inputAllowed = true;
     public bool _isNotMoving = true;
@@ -23,27 +24,33 @@ public class Movement : MonoBehaviour
 
     public IEnumerator Jump(bool side)
     {
-        _currentTmie = 0;
-        
-        var pos = transform.position;
-        while (_currentTmie < _totalTime)
+
+        _currentTime = 0;
+
+        if(i > 7)
         {
-            pos.y = _jumpStrenghtCurve.Evaluate(_currentTmie);
+            StartCoroutine(_spawner.ObjectsAnimation());
+        }
+
+        var pos = transform.position;
+        while (_currentTime < _totalTime)
+        {
+            pos.y = _jumpStrenghtCurve.Evaluate(_currentTime);
             
             if(side)
             {
-                pos.z = _jumpDirectionAxisZ.Evaluate(_currentTmie);
+                pos.z = _jumpDirectionAxisZ.Evaluate(_currentTime);
                 _player.transform.rotation = Quaternion.Euler(0f, 0, 0f);
             }
             
             else
             {
-                pos.x = _jumpDirectionAxisX.Evaluate(_currentTmie);
+                pos.x = _jumpDirectionAxisX.Evaluate(_currentTime);
                 _player.transform.rotation = Quaternion.Euler(0f, 90, 0f);
             }
 
             _player.transform.position = pos;
-            _currentTmie += Time.fixedDeltaTime * 1.5f;
+            _currentTime += Time.fixedDeltaTime * 1.5f;
 
             yield return new WaitForSeconds(0.001f);
         }
@@ -62,5 +69,6 @@ public class Movement : MonoBehaviour
         
         _jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, _player.transform.position.x), new Keyframe(_animationTime, _player.transform.position.x - 1.5f));
         _isNotMoving = true;
+        i++;
     }
 }

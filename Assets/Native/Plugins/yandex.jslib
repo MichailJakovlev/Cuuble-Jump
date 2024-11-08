@@ -33,7 +33,7 @@ mergeInto(LibraryManager.library, {
         console.log('YSDK LANG', buffer);
         return buffer;
       } catch(err) {
-        // взять язык с браузера
+        // Получить язык с браузера
         var lang = navigator.language;
         var bufferSize = lengthBytesUTF8(lang) + 1;
         var buffer = _malloc(bufferSize);
@@ -69,19 +69,19 @@ mergeInto(LibraryManager.library, {
       })
     },
     
-    ShowReward : function(){
+    ShowReward : function(num){
       ysdk.adv.showRewardedVideo({
       callbacks: {
           onOpen: () => {
-            console.log('Reward Video Opened');
+            console.log('Reward Video Opened', num);
           },
           onRewarded: () => {
-            gameInstance.SendMessage('YandexManager', 'Rewarded');
-            console.log('Reward Video Watched');
+            gameInstance.SendMessage('YandexManager', 'Rewarded', num);
+            console.log('Reward Video Watched', num);
           },
           onClose: () => {
             gameInstance.SendMessage('GameState', 'StartGame');
-            console.log('Reward Video Closed');
+            console.log('Reward Video Closed', num);
           },
           onError: (e) => {
             console.log('Error while open video ad:', e);

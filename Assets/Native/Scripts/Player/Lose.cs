@@ -8,7 +8,7 @@ public class Lose : MonoBehaviour
 
     public void GameOver()
     {
-        //_gameState.StopGame();
+        _gameState.StopGame();
         _gameOverMenu.SetActive(true);
         _popupScreen.SetActive(true);
     }
