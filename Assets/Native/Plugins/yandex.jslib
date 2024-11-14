@@ -102,7 +102,26 @@ mergeInto(LibraryManager.library, {
       ysdk.getLeaderboards()
         .then(lb => {
           lb.getLeaderboardEntries('leaderboard', { quantityTop: 10, includeUser: true, quantityAround: 3 })
-            .then(res => console.log(res));
+            .then(res => {
+              var lbAnswer = {
+                  "lbName_ru": res.leaderboard.title.ru,
+                  "lbName_en": res.leaderboard.title.en,
+                  "playerRank": res.userRank,
+                  "entries": []
+              };
+              var lbEntries = [];
+              res.entries.forEach(line => {
+                  var entry = {
+                      "playerName": line.player.publicName,
+                      "rank": line.line,
+                      "score": line.score
+                  };
+                  lbEntries.push(entry);
+              });
+              lbAnswer.entries = lbEntries;
+              window.gameInstance.SendMessage("Leaderboard", "GetPlayers", JSON.stringify(lbAnswer));
+              console.log('LEADERBOARD ANSWER', lbAnswer);
+          });
       })
     },
   });

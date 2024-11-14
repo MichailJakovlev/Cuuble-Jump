@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,9 +14,6 @@ public class YandexManager : MonoBehaviour
     public static extern void SendGameStop();
 
     [DllImport("__Internal")]
-    public static extern string GetLang();
-
-    [DllImport("__Internal")]
     public static extern void CallRateGame();
 
     [DllImport("__Internal")]
@@ -26,12 +22,10 @@ public class YandexManager : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void ShowReward(int num);
 
-    [SerializeField] TextMeshProUGUI _languageText;
     [SerializeField] private GameState _gameState;
     private CharacterSkinManager _characterSkinManager;
     private ThemeSkinManager _themeSkinManager;
 
-    public string _currentLanguage;
     private bool _isGameReady = false;
 
     public void Start()
@@ -66,25 +60,6 @@ public class YandexManager : MonoBehaviour
     {
         SendGameStop();
     }
-
-    // Languages managment
-    public static YandexManager _instance;
-
-   // private void Awake()
-   // {
-     //   if (_instance == null)
-       // {
-         //   _instance = this;
-           // DontDestroyOnLoad(gameObject);
-
-           // _currentLanguage = GetLang();
-           // _languageText.text = _currentLanguage;
-       // }
-       // else
-       // {
-         //   Destroy(gameObject);
-       // }
-    //}
 
     // Rate game managment
     public void RateGame()
