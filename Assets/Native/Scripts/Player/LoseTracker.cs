@@ -6,15 +6,15 @@ public class LoseTracker : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _deadParticles;
-    [SerializeField] private Spawner _spawner;
     [SerializeField] private PlayerInput _input;
     [SerializeField] private Lose _lose;
+    [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private AudioState _audioState;
     [SerializeField] private float _losingAnimationTime, _fallingTime;
-    private float _currentDirection;
-    private int _collison;
+    public float _currentDirection;
+    public int _collison;
 
     public Queue<float> _queueDirection;
     public Queue<int> _queueDecorationCollision;
@@ -59,21 +59,20 @@ public class LoseTracker : MonoBehaviour
 
     public void StartLose(bool isCollison)
     {
-        _cameraController.target = _cameraController.gameObject.transform;
-        _cameraController._offset = new Vector3(0, 0, 0);
+        _cameraController.isGameover = true;
         _input._inputAllowed = false;
-
+        _gameOverScreen.Show();
         if (isCollison)
         {
-            StartCoroutine(Losing());
+            StartCoroutine(Losing(_losingAnimationTime));
         }
         else
         {
-            StartCoroutine(FallLose());
+            StartCoroutine(FallLose(_fallingTime));
         }
     }
 
-    public IEnumerator FallLose()
+    public IEnumerator FallLose(float _fallingTime)
     {
         while (_fallingTime > 0)
         {
@@ -86,13 +85,14 @@ public class LoseTracker : MonoBehaviour
             _fallingTime -= Time.fixedDeltaTime;
             yield return new WaitForSeconds(0.001f);
         }
-        StartCoroutine(Losing());
+        StartCoroutine(Losing(_losingAnimationTime));
     }
 
-    public IEnumerator Losing()
+    public IEnumerator Losing(float _losingAnimationTime)
     {
         while (_losingAnimationTime > 0)
         {
+            _input._inputAllowed = false;
             _losingAnimationTime -= Time.fixedDeltaTime;
             yield return new WaitForSeconds(0.001f);
         }

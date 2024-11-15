@@ -8,7 +8,6 @@ public class CoinCounter : MonoBehaviour
     public void PlayerPrefsCoinsSet(int value)
     {
         PlayerPrefs.SetInt("coins", value);
-        // print("set " + value);
     }
 
     public int PlayerPrefsCoinsGet()

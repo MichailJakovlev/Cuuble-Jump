@@ -15,7 +15,7 @@ public class GameState : MonoBehaviour
 
     public void StartGame()
     {
-        _yandexManager.StartGame();         
+        _yandexManager.StartGame();
         _audioState.StartMusic();
         Time.timeScale = 1;
     }

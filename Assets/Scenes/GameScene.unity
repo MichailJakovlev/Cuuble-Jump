@@ -259,7 +259,6 @@ GameObject:
   - component: {fileID: 285471435}
   - component: {fileID: 285471433}
   - component: {fileID: 285471434}
-  - component: {fileID: 285471436}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: Untagged
@@ -341,50 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &285471436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285471432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
 --- !u!1 &458009416
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 627688a49e3edaf41a6e08b1c5121efe, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -762,7 +717,6 @@ GameObject:
   - component: {fileID: 599139123}
   - component: {fileID: 599139126}
   - component: {fileID: 599139128}
-  - component: {fileID: 599139129}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -860,6 +814,7 @@ MonoBehaviour:
   _player: {fileID: 1957886026}
   target: {fileID: 0}
   _offset: {x: 0, y: 0, z: 0}
+  isGameover: 0
 --- !u!23 &599139128
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -902,50 +857,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &599139129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599139122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
 --- !u!1 &1008534355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +914,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1089243761}
   - component: {fileID: 1089243760}
-  - component: {fileID: 1089243762}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1088,29 +998,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: -45, z: 0}
---- !u!114 &1089243762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089243759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &1309087984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,6 +1131,7 @@ MonoBehaviour:
   _leftDecorationPosition: {x: 1.5, y: 0.75, z: -1.5}
   _rightDecorationPosition: {x: -1.5, y: 0.75, z: 1.5}
   _movement: {fileID: 1957886028}
+  _platform: {fileID: 0}
 --- !u!4 &1610766309
 Transform:
   m_ObjectHideFlags: 0
@@ -1347,6 +1235,18 @@ MonoBehaviour:
       - m_Target: {fileID: 217997703}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
         m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5839242927807276744}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
+        m_MethodName: DoubleCoins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1484,6 +1384,7 @@ GameObject:
   - component: {fileID: 1957886033}
   - component: {fileID: 1957886035}
   - component: {fileID: 1957886034}
+  - component: {fileID: 1957886036}
   - component: {fileID: 1957886030}
   - component: {fileID: 1957886031}
   m_Layer: 0
@@ -1604,7 +1505,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _animationTime: 0.25
+  _totalTime: 0
   _currentTime: 0
+  pos: {x: 0, y: 0, z: 0}
   _inputAllowed: 1
   _isNotMoving: 1
 --- !u!114 &1957886029
@@ -1685,6 +1588,8 @@ MonoBehaviour:
   _loseTracker: {fileID: 1957886035}
   _player: {fileID: 1957886026}
   _inputAllowed: 1
+  _side: 0
+  _playerPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1957886033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,14 +1634,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1957886026}
   _deadParticles: {fileID: 5348279814568561733, guid: 00ba4a8bd0953004cac996844a777a94, type: 3}
-  _spawner: {fileID: 1610766308}
   _input: {fileID: 1957886032}
   _lose: {fileID: 1957886034}
+  _gameOverScreen: {fileID: 5839242927807276744}
   _scoreCounter: {fileID: 535304949}
   _cameraController: {fileID: 599139126}
   _audioState: {fileID: 217997703}
   _losingAnimationTime: 2
   _fallingTime: 5
+  _currentDirection: 0
+  _collison: 0
+--- !u!114 &1957886036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957886026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3837f31773778438e16fd9bf8c812a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameState: {fileID: 217997702}
+  _gameOverMenu: {fileID: 2381751494201904497}
+  _player: {fileID: 1957886026}
+  _input: {fileID: 1957886032}
+  _popupScreen: {fileID: 5614549362009881367}
+  _cameraController: {fileID: 599139126}
+  _spawner: {fileID: 1610766308}
+  _playerInput: {fileID: 1957886032}
+  _movement: {fileID: 1957886028}
+  _loseTracker: {fileID: 1957886035}
 --- !u!224 &37119683595289331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2334,7 +2263,6 @@ GameObject:
   - component: {fileID: 7913430919821544179}
   - component: {fileID: 501834035597851229}
   - component: {fileID: 3237579670248850741}
-  - component: {fileID: 7309846302946426589}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -2472,7 +2400,6 @@ GameObject:
   - component: {fileID: 5839242927807276742}
   - component: {fileID: 5611679208689616077}
   - component: {fileID: 5839242927807276744}
-  - component: {fileID: 5839242927807276743}
   m_Layer: 5
   m_Name: Gameover Menu
   m_TagString: Untagged
@@ -3237,6 +3164,18 @@ MonoBehaviour:
       - m_Target: {fileID: 217997703}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
         m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1957886036}
+        m_TargetAssemblyTypeName: PlayerRevival, Assembly-CSharp
+        m_MethodName: Revive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4013,19 +3952,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00041007996, y: 110.88}
   m_SizeDelta: {x: 617.62, y: 264.36}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5839242927807276743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2381751494201904497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e2cc7028e799149bf034fba9ce421d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreCounter: {fileID: 535304949}
 --- !u!114 &5839242927807276744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4038,7 +3964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba02585d620f244c95273b667933796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreSaver: {fileID: 5839242927807276743}
   _scoreCounter: {fileID: 535304949}
   _scoreText: {fileID: 5304219930685522772}
   _recordText: {fileID: 526761635179854117}
@@ -4046,7 +3971,10 @@ MonoBehaviour:
   _defeatScreen: {fileID: 8056668128865007060}
   _newRecord: {fileID: 4548672826235113439}
   _audioState: {fileID: 217997703}
-  _leaderboard: {fileID: 0}
+  _leaderboard: {fileID: 1008534356}
+  _coinCounter: {fileID: 0}
+  _textCoins: {fileID: 7634544512462650063}
+  _doubleCoinsButton: {fileID: 1656517012}
 --- !u!224 &5858495069733114434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4374,10 +4302,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2450519405941370473, guid: 733d34137a2a12642a3012887d9802be, type: 3}
-      propertyPath: _destroyer
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2525007545633838303, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4421,6 +4345,10 @@ PrefabInstance:
     - target: {fileID: 8953325506199826126, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
       propertyPath: m_Name
       value: AudioSources
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450519405941370473, guid: 733d34137a2a12642a3012887d9802be, type: 3}
+      propertyPath: _destroyer
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4496,20 +4424,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7309846302946426589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079417688088526567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc9020a0cfbd7d46a6c89ba3dacd511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinCounter: {fileID: 0}
-  _textCoins: {fileID: 7634544512462650063}
 --- !u!224 &7321051642719732985
 RectTransform:
   m_ObjectHideFlags: 0

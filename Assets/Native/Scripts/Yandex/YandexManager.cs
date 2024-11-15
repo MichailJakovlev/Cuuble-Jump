@@ -70,20 +70,20 @@ public class YandexManager : MonoBehaviour
     // Languages managment
     public static YandexManager _instance;
 
-   // private void Awake()
-   // {
-     //   if (_instance == null)
-       // {
-         //   _instance = this;
-           // DontDestroyOnLoad(gameObject);
+    // private void Awake()
+    // {
+    //   if (_instance == null)
+    // {
+    //   _instance = this;
+    // DontDestroyOnLoad(gameObject);
 
-           // _currentLanguage = GetLang();
-           // _languageText.text = _currentLanguage;
-       // }
-       // else
-       // {
-         //   Destroy(gameObject);
-       // }
+    // _currentLanguage = GetLang();
+    // _languageText.text = _currentLanguage;
+    // }
+    // else
+    // {
+    //   Destroy(gameObject);
+    // }
     //}
 
     // Rate game managment

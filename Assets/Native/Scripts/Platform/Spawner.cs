@@ -17,12 +17,12 @@ public class Spawner : MonoBehaviour
     private Decoration _leftDecoration, _rightDecoration;
     private bool _isNotAnimating = true;
 
-    private Queue<Platform> _queuePlatforms;
+    public Queue<Platform> _queuePlatforms;
     private Queue<Decoration> _queueLeftDecorations;
     private Queue<Decoration> _queueRightDecorations;
     private Queue<Coin> _queueCoins;
 
-    private Platform _platform;
+    public Platform _platform;
     private List<Decoration> _decorationList;
     private List<Decoration> skinModelsCopy;
 

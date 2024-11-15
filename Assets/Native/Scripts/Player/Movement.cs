@@ -5,21 +5,23 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private Spawner _spawner;
-    [SerializeField] private AnimationCurve _jumpStrenghtCurve;
-    [SerializeField] private AnimationCurve _jumpDirectionAxisX;
-    [SerializeField] private AnimationCurve _jumpDirectionAxisZ;
-    [SerializeField] private float _animationTime;
+    [SerializeField] public AnimationCurve _jumpStrenghtCurve;
+    [SerializeField] public AnimationCurve _jumpDirectionAxisX;
+    [SerializeField] public AnimationCurve _jumpDirectionAxisZ;
+    [SerializeField] public float _animationTime;
 
-    float _totalTime;
+    public float _totalTime;
     public float _currentTime;
     int i = 0;
 
+    public Vector3 pos;
     public bool _inputAllowed = true;
     public bool _isNotMoving = true;
-    
+
     public void Start()
     {
         _totalTime = _jumpStrenghtCurve.keys[_jumpStrenghtCurve.keys.Length - 1].time;
+        PlayerPrefs.SetInt("isFallingOnPlatform", 0);
     }
 
     public IEnumerator Jump(bool side)
@@ -32,17 +34,18 @@ public class Movement : MonoBehaviour
             StartCoroutine(_spawner.ObjectsAnimation());
         }
 
-        var pos = transform.position;
+        pos = _player.transform.position;
+
         while (_currentTime < _totalTime)
         {
             pos.y = _jumpStrenghtCurve.Evaluate(_currentTime);
-            
+
             if(side)
             {
                 pos.z = _jumpDirectionAxisZ.Evaluate(_currentTime);
                 _player.transform.rotation = Quaternion.Euler(0f, 0, 0f);
             }
-            
+
             else
             {
                 pos.x = _jumpDirectionAxisX.Evaluate(_currentTime);
@@ -54,7 +57,7 @@ public class Movement : MonoBehaviour
 
             yield return new WaitForSeconds(0.001f);
         }
-        
+
         if(side)
         {
             _player.transform.position = new Vector3(_player.transform.position.x, _jumpStrenghtCurve.Evaluate(_totalTime), _jumpDirectionAxisZ.Evaluate(_totalTime));
@@ -66,7 +69,7 @@ public class Movement : MonoBehaviour
 
         _jumpStrenghtCurve = new AnimationCurve(new Keyframe(0, _player.transform.position.y), new Keyframe(_animationTime / 2, _player.transform.position.y + 1.5f), new Keyframe(_animationTime, _player.transform.position.y + 0.75f));
         _jumpDirectionAxisZ = new AnimationCurve(new Keyframe(0, _player.transform.position.z), new Keyframe(_animationTime, _player.transform.position.z - 1.5f));
-        
+
         _jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, _player.transform.position.x), new Keyframe(_animationTime, _player.transform.position.x - 1.5f));
         _isNotMoving = true;
         i++;

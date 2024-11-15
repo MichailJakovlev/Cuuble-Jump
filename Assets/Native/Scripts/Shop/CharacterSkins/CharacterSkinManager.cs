@@ -151,6 +151,7 @@ public class CharacterSkinManager : MonoBehaviour
     private void IsUnlocked(CharacterSkin skin)
     {
         string unlocked = unlockedSkins.Find(m => m.Contains(skin.name.ToString()));
+        coinsButton.interactable = true;
 
         if (PlayerPrefs.GetInt("coins") < skin.price)
         {

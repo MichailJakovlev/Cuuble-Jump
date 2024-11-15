@@ -12,8 +12,47 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private AudioState _audioState;
     [SerializeField] private Leaderboard _leaderboard;
 
-    void Start()
+    [SerializeField] private CoinCounter _coinCounter;
+    [SerializeField] private TextMeshProUGUI _textCoins;
+    [SerializeField] private GameObject _doubleCoinsButton;
+
+    [SerializeField] private GameObject _continueButton;
+
+    private bool _isFirstTry = true;
+
+    public void SetFirstTryFalse() => _isFirstTry = false;
+
+    public void Show()
     {
+        _coinCounter = GameObject.Find("Canvas").GetComponent<CoinCounter>();
+        _textCoins.text = $"+{_coinCounter.coins}";
+        double percent = (double)_scoreCounter.score / PlayerPrefs.GetInt("Record", 0) * 100;
+
+
+        if (PlayerPrefs.GetInt("Record", 0) == 0)
+        {
+            _continueButton.SetActive(false);
+            _doubleCoinsButton.SetActive(false);
+            print("record");
+        }
+        else if (percent >= 75 && _isFirstTry == true)
+        {
+            _continueButton.SetActive(true);
+            _doubleCoinsButton.SetActive(false);
+            print("no record but 0.75 and isFirst");
+        }
+        else
+        {
+            _continueButton.SetActive(false);
+            _doubleCoinsButton.SetActive(true);
+            print("no 0.75 no isFirst no record but coins");
+            if (_coinCounter.coins <= 0)
+            {
+                _doubleCoinsButton.SetActive(false);
+                print("no 0.75 no isFirst no record no coins");
+            }
+        }
+
         if (_scoreCounter.score > PlayerPrefs.GetInt("Record", 0))
         {
             _audioState.PlayNewRecordSound();
@@ -31,5 +70,13 @@ public class GameOverScreen : MonoBehaviour
             _scoreText.text = _scoreCounter.score.ToString();
             _recordText.text = PlayerPrefs.GetInt("Record", 0).ToString();
         }
+    }
+
+    public void DoubleCoins()
+    {
+        _coinCounter.PlayerPrefsCoinsSet(_coinCounter.PlayerPrefsCoinsGet() + _coinCounter.coins);
+        _coinCounter.coins *= 2;
+        _textCoins.text = $"+{_coinCounter.coins}";
+        _doubleCoinsButton.SetActive(false);
     }
 }

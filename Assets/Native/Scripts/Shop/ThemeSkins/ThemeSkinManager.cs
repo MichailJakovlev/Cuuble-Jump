@@ -159,6 +159,7 @@ public class ThemeSkinManager : MonoBehaviour
     private void IsUnlocked(ThemeSkin skin)
     {
         string unlocked = unlockedSkins.Find(m => m.Contains(skin.name.ToString()));
+        coinsButton.interactable = true;
 
         if (PlayerPrefs.GetInt("coins") < skin.price)
         {

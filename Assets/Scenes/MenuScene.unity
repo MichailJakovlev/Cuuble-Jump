@@ -576,7 +576,6 @@ MonoBehaviour:
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
-    serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
@@ -1421,7 +1420,6 @@ MonoBehaviour:
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
-    serializedVersion: 2
     m_Bits: 32
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
@@ -5245,7 +5243,6 @@ MonoBehaviour:
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
-    serializedVersion: 2
     m_Bits: 0
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
@@ -5736,7 +5733,6 @@ MonoBehaviour:
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
-    serializedVersion: 2
     m_Bits: 4294967295
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
@@ -7667,6 +7663,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1242256886}
     m_Modifications:
+    - target: {fileID: -2281915540445690612, guid: 733d34137a2a12642a3012887d9802be, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 536439203038774238, guid: 733d34137a2a12642a3012887d9802be, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450519405941370473, guid: 733d34137a2a12642a3012887d9802be, type: 3}
+      propertyPath: _destroyer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5894803800622365959, guid: 58e89dc15eaea4a49b0d70a57e894513, type: 3}
       propertyPath: m_LocalScale.x
       value: 50
@@ -7735,18 +7743,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2281915540445690612, guid: 733d34137a2a12642a3012887d9802be, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 536439203038774238, guid: 733d34137a2a12642a3012887d9802be, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450519405941370473, guid: 733d34137a2a12642a3012887d9802be, type: 3}
-      propertyPath: _destroyer
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2281915540445690612, guid: 733d34137a2a12642a3012887d9802be, type: 3}
     - {fileID: 7862889476061864439, guid: 733d34137a2a12642a3012887d9802be, type: 3}
@@ -7795,7 +7791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22.999878, y: 12}
+  m_AnchoredPosition: {x: 22.999878, y: 12.000427}
   m_SizeDelta: {x: 116.890015, y: 122.52295}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1409468538
@@ -9885,13 +9881,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961369684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 627688a49e3edaf41a6e08b1c5121efe, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
