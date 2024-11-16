@@ -11,10 +11,19 @@ public class CameraController : MonoBehaviour
     private Vector3 _currentVelocity = Vector3.zero;
     public bool isGameover = false;
 
+    private void Awake()
+    {
+        if(Application.isMobilePlatform)
+        {
+            gameObject.GetComponent<Camera>().orthographicSize = 10;
+        }
+    }
+
     private void Start()
     {
         target = _player.transform;
         _offset = transform.position - target.position;
+
     }
 
     private void LateUpdate()
@@ -29,5 +38,4 @@ public class CameraController : MonoBehaviour
             transform.position = transform.position;
         }
     }
-
 }

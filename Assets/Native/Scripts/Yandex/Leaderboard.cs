@@ -1,46 +1,63 @@
-using System.Collections.Generic;
-using TMPro;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Leaderboard : MonoBehaviour
 {
-    // [DllImport("__Internal")]
-    // public static extern void SetScoreLeaderboard(int record);
+    [DllImport("__Internal")]
+    public static extern void SetScoreLeaderboard(int record);
 
-    // [DllImport("__Internal")]
-    // public static extern void GetScoreLeaderboard();
+    [DllImport("__Internal")]
+    public static extern void GetScoreLeaderboard();
 
     [SerializeField] private GameObject _leaderboardPanel;
-    [SerializeField] private TextMeshProUGUI _name;
-    [SerializeField] private TextMeshProUGUI _score;
+    [SerializeField] private LBContent _content;
+    private bool _isLeaderboardClear;
+
+    private void Awake()
+    {
+        // _isLeaderboardClear = true;
+    }
 
     [System.Serializable]
-    public class TestPlayer
+    public class PlayerJson
     {
-        public string name;
+        public int rank;
+        public string playerName;
         public int score;
     }
 
-    TestPlayer player = new TestPlayer() { name = "Valera", score = 35};
+    [System.Serializable]
+    public class PlayerJsonArray
+    {
+        public PlayerJson[] entries;
+    }
+
+    public void GetPlayers(string lbAnswer)
+    {
+        PlayerJsonArray playerArray = JsonUtility.FromJson<PlayerJsonArray>(lbAnswer);
+
+        for (int i = 0; i < playerArray.entries.Length; i++)
+        {
+            _content.Fill(playerArray.entries[i].playerName.ToString(), playerArray.entries[i].score.ToString(), playerArray.entries[i].rank.ToString());
+        }
+    }
+
+    public void SetPlayerScore(int record)
+    {
+        SetScoreLeaderboard(record);
+    }
+
     public void OpenLeaderboard()
     {
-        // _leaderboardPanel.SetActive(true);
-        string playerJson = JsonUtility.ToJson(player);
-        Debug.Log(playerJson);
-
-        TestPlayer deserialize = JsonUtility.FromJson<TestPlayer>(playerJson);
-        _name.text = deserialize.name;
-        _score.text = deserialize.score.ToString();
-
+        if (_isLeaderboardClear)
+        {
+            GetScoreLeaderboard();
+            _isLeaderboardClear = false;
+        }
     }
 
     public void CloseLeaderboard()
     {
         _leaderboardPanel.SetActive(false);
-    }
-
-    public void SetPlayerScore(int record)
-    {
-       // SetScoreLeaderboard(record);
     }
 }
