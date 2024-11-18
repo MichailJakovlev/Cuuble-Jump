@@ -1596,6 +1596,7 @@ MonoBehaviour:
   _spawner: {fileID: 1610766308}
   _loseTracker: {fileID: 1957886035}
   _player: {fileID: 1957886026}
+  _guide: {fileID: 332819381}
   _inputAllowed: 1
   _side: 0
   _playerPosition: {x: 0, y: 0, z: 0}

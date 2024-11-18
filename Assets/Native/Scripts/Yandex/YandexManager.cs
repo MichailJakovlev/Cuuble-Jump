@@ -30,72 +30,72 @@ public class YandexManager : MonoBehaviour
 
     public void Start()
     {
-        // if (SceneManager.GetActiveScene().buildIndex == 0)
-        // {
-        //     ShowFullscreenAd();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            ShowFullscreenAd();
 
-        //     _characterSkinManager = GameObject.Find("Current Skin").GetComponent<CharacterSkinManager>();
-        //     _themeSkinManager = GameObject.Find("Current Theme").GetComponent<ThemeSkinManager>();
+            _characterSkinManager = GameObject.Find("Current Skin").GetComponent<CharacterSkinManager>();
+            _themeSkinManager = GameObject.Find("Current Theme").GetComponent<ThemeSkinManager>();
 
-        //     if (_isGameReady == false)
-        //     {
-        //         ReadyGame();
-        //         _isGameReady = true;
-        //     }
-        // }
+            if (_isGameReady == false)
+            {
+                ReadyGame();
+                _isGameReady = true;
+            }
+        }
     }
 
     // Ready Game API managment
     public void ReadyGame()
     {
-        // SendGameReady();
+        SendGameReady();
     }
 
     public void StartGame()
     {
-        // SendGameStart();
+        SendGameStart();
     }
 
     public void StopGame()
     {
-        // SendGameStop();
+        SendGameStop();
     }
 
     // Rate game managment
     public void RateGame()
     {
-        // CallRateGame();
+        CallRateGame();
     }
 
     public void GetRatedAward()
     {
-        // _characterSkinManager.UnlockSkinReview();
+        _characterSkinManager.UnlockSkinReview();
     }
 
     // Ad managment
     public void ShowFullscreenAd()
     {
-        // _gameState.StopGame();
-        // ShowAd();
+        _gameState.StopGame();
+        ShowAd();
     }
 
     public void ShowRewardAd(int num)
     {
-        // _gameState.StopGame();
-        // ShowReward(num);
+        _gameState.StopGame();
+        ShowReward(num);
     }
 
     public void Rewarded(int num)
     {
-        // _gameState.StartGame();
+        _gameState.StartGame();
 
         switch (num)
         {
             case 1:
-                // _characterSkinManager.UnlockSkinAd();
+                _characterSkinManager.UnlockSkinAd();
                 break;
             case 2:
-                // _themeSkinManager.UnlockSkinAd();
+                _themeSkinManager.UnlockSkinAd();
                 break;
             case 3:
                 //Double coins method

@@ -62,15 +62,12 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 429d7e7d60157544bbadff6e284140a1, type: 3}
     - {fileID: 2800000, guid: 71275f640b3c4c04792244d67441bf5f, type: 3}
     - {fileID: 2800000, guid: 739bfd690358f8747af80557c7fcff55, type: 3}
-    - {fileID: 2800000, guid: c585111d01a53814cbe8ec6e3d6a0046, type: 3}
-    - {fileID: 2800000, guid: b83c188271ca352439c596a8458f46a8, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - 2ea284807adfff44db504ff1f9847162: 21300000
     - 17fe9f814b59415448b67ca0d370d9d2: 21300000
-    - b83c188271ca352439c596a8458f46a8: 21300000
     - 4edf78a3260d4794987af0792507ea22: 21300000
     - cd762fa3a3efd8d47afd1abacf4d9d7a: 21300000
     - 84f03fd3d81dbad4fb02df203a43ddd1: 21300000
@@ -81,7 +78,6 @@ SpriteAtlas:
     - 65d7ad69566bd3043af3a15b6a29de33: 21300000
     - 739bfd690358f8747af80557c7fcff55: 21300000
     - 83ab89eb1fefd5548a406d944eae02d9: 21300000
-    - c585111d01a53814cbe8ec6e3d6a0046: 21300000
     - 7c96223d6c82a5e4ebc8ac1115c8a3d6: 21300000
     - 429d7e7d60157544bbadff6e284140a1: 21300000
     - b0118dce079a6094bb31dd84d3b1f4d4: 21300000
@@ -90,7 +86,6 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 2ea284807adfff44db504ff1f9847162, type: 3}
   - {fileID: 21300000, guid: 17fe9f814b59415448b67ca0d370d9d2, type: 3}
-  - {fileID: 21300000, guid: b83c188271ca352439c596a8458f46a8, type: 3}
   - {fileID: 21300000, guid: 4edf78a3260d4794987af0792507ea22, type: 3}
   - {fileID: 21300000, guid: cd762fa3a3efd8d47afd1abacf4d9d7a, type: 3}
   - {fileID: 21300000, guid: 84f03fd3d81dbad4fb02df203a43ddd1, type: 3}
@@ -101,7 +96,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 65d7ad69566bd3043af3a15b6a29de33, type: 3}
   - {fileID: 21300000, guid: 739bfd690358f8747af80557c7fcff55, type: 3}
   - {fileID: 21300000, guid: 83ab89eb1fefd5548a406d944eae02d9, type: 3}
-  - {fileID: 21300000, guid: c585111d01a53814cbe8ec6e3d6a0046, type: 3}
   - {fileID: 21300000, guid: 7c96223d6c82a5e4ebc8ac1115c8a3d6, type: 3}
   - {fileID: 21300000, guid: 429d7e7d60157544bbadff6e284140a1, type: 3}
   - {fileID: 21300000, guid: b0118dce079a6094bb31dd84d3b1f4d4, type: 3}
@@ -109,7 +103,6 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - off
   - Background-gradient
-  - Grass-1
   - Grass-Buttons-arrow2
   - Buttons-pause
   - Background-gui
@@ -120,7 +113,6 @@ SpriteAtlas:
   - Coin
   - Arrow3
   - Buttons-som
-  - base
   - Buttons-return
   - Buttons-x
   - Button
