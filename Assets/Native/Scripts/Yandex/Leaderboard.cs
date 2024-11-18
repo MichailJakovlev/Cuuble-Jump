@@ -21,43 +21,43 @@ public class Leaderboard : MonoBehaviour
     [System.Serializable]
     public class PlayerJson
     {
-        public int rank;
-        public string playerName;
-        public int score;
+        // public int rank;
+        // public string playerName;
+        // public int score;
     }
 
     [System.Serializable]
     public class PlayerJsonArray
     {
-        public PlayerJson[] entries;
+        // public PlayerJson[] entries;
     }
 
     public void GetPlayers(string lbAnswer)
     {
-        PlayerJsonArray playerArray = JsonUtility.FromJson<PlayerJsonArray>(lbAnswer);
+        // PlayerJsonArray playerArray = JsonUtility.FromJson<PlayerJsonArray>(lbAnswer);
 
-        for (int i = 0; i < playerArray.entries.Length; i++)
-        {
-            _content.Fill(playerArray.entries[i].playerName.ToString(), playerArray.entries[i].score.ToString(), playerArray.entries[i].rank.ToString());
-        }
+        // for (int i = 0; i < playerArray.entries.Length; i++)
+        // {
+        //     _content.Fill(playerArray.entries[i].playerName.ToString(), playerArray.entries[i].score.ToString(), playerArray.entries[i].rank.ToString());
+        // }
     }
 
     public void SetPlayerScore(int record)
     {
-        SetScoreLeaderboard(record);
+        // SetScoreLeaderboard(record);
     }
 
     public void OpenLeaderboard()
     {
-        if (_isLeaderboardClear)
-        {
-            GetScoreLeaderboard();
-            _isLeaderboardClear = false;
-        }
+        // if (_isLeaderboardClear)
+        // {
+        //     GetScoreLeaderboard();
+        //     _isLeaderboardClear = false;
+        // }
     }
 
     public void CloseLeaderboard()
     {
-        _leaderboardPanel.SetActive(false);
+        // _leaderboardPanel.SetActive(false);
     }
 }
