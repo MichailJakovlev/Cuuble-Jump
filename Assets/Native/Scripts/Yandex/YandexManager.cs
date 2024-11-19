@@ -23,6 +23,8 @@ public class YandexManager : MonoBehaviour
     public static extern void ShowReward(int num);
 
     [SerializeField] private GameState _gameState;
+    [SerializeField] private PlayerRevival _playerRevival;
+    [SerializeField] private GameOverScreen _gameOverScreen;
     private CharacterSkinManager _characterSkinManager;
     private ThemeSkinManager _themeSkinManager;
 
@@ -98,10 +100,10 @@ public class YandexManager : MonoBehaviour
                 _themeSkinManager.UnlockSkinAd();
                 break;
             case 3:
-                //Double coins method
+                _gameOverScreen.DoubleCoins();
                 break;
             case 4:
-                //Rebirth player method
+                _playerRevival.Revive();
                 break;
         }
     }

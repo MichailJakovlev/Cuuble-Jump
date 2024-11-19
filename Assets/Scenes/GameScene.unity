@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameState: {fileID: 217997702}
+  _playerRevival: {fileID: 1957886036}
+  _gameOverScreen: {fileID: 5839242927807276744}
 --- !u!4 &201415362
 Transform:
   m_ObjectHideFlags: 0
@@ -637,9 +639,9 @@ GameObject:
   - component: {fileID: 599139125}
   - component: {fileID: 599139124}
   - component: {fileID: 599139123}
-  - component: {fileID: 599139126}
   - component: {fileID: 599139128}
   - component: {fileID: 599139130}
+  - component: {fileID: 599139126}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1105,7 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _themeSkinDB: {fileID: 11400000, guid: 4eba0fc613fab05469f1c0e328652619, type: 2}
-  _coin: {fileID: 9104307039555714773, guid: faffc1d1e0184154b9f432819968c2ae, type: 3}
+  _coin: {fileID: -8211346310771654486, guid: 7bfe70de2b68a594bbec4b294f6e11af, type: 3}
   _loseTracker: {fileID: 1957886035}
   _curve:
     serializedVersion: 2
@@ -1253,14 +1255,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5839242927807276744}
-        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
-        m_MethodName: DoubleCoins
-        m_Mode: 1
+      - m_Target: {fileID: 201415361}
+        m_TargetAssemblyTypeName: YandexManager, Assembly-CSharp
+        m_MethodName: ShowRewardAd
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1531,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8443dd4861d6646b2af65b7f9e9be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinCounter: {fileID: 0}
+  _coinCounter: {fileID: 1398843443577158084}
 --- !u!54 &1957886030
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3258,14 +3260,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1957886036}
-        m_TargetAssemblyTypeName: PlayerRevival, Assembly-CSharp
-        m_MethodName: Revive
-        m_Mode: 1
+      - m_Target: {fileID: 201415361}
+        m_TargetAssemblyTypeName: YandexManager, Assembly-CSharp
+        m_MethodName: ShowRewardAd
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

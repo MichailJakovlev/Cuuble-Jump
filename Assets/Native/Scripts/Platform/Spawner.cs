@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     private Queue<Decoration> _queueRightDecorations;
     private Queue<Coin> _queueCoins;
 
-    public Platform _platform;
+    [HideInInspector] public Platform _platform;
     private List<Decoration> _decorationList;
     private List<Decoration> skinModelsCopy;
 
