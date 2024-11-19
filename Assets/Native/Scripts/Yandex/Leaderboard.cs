@@ -15,7 +15,7 @@ public class Leaderboard : MonoBehaviour
 
     private void Awake()
     {
-        // _isLeaderboardClear = true;
+        _isLeaderboardClear = true;
     }
 
     [System.Serializable]
