@@ -6,7 +6,6 @@ public class CoinTaker : MonoBehaviour
 
     void Start()
     {
-        // _coinCounter.PlayerPrefsCoinsSet(0);
         _coinCounter = GameObject.Find("Canvas").GetComponent<CoinCounter>();
     }
 

@@ -2,11 +2,12 @@ public enum CharacterSkins
 {
     Cat,
     Boar,
-    Cow,
+    Elephant,
     Fox,
     Pig,
     Panda,
     Wolf,
     Tiger,
-    Grill,
+    Dwarf,
+    Koala
 }
