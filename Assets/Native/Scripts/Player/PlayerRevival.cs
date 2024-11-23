@@ -31,6 +31,7 @@ public class PlayerRevival : MonoBehaviour
 
     public void Revive()
     {
+        _loseTracker._isDefeated = true;
         _player.GetComponent<BoxCollider>().enabled = false;
         _gameOverMenu.SetActive(false);
         _popupScreen.SetActive(false);
