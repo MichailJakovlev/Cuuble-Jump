@@ -7,6 +7,7 @@ public class AudioState : MonoBehaviour
     [SerializeField] private AudioSource _crashSound;
     [SerializeField] private AudioSource _fallSound;
     [SerializeField] private AudioSource _buttonClickSound;
+    [SerializeField] private AudioSource _music;
     public AudioMixer Mixer;
 
     void Start()
@@ -21,28 +22,34 @@ public class AudioState : MonoBehaviour
         }
     }
 
+    
+
     public void StopSounds()
     {
         Mixer.SetFloat("MasterVolume", -80);
-        PlayerPrefs.SetInt("Volume", 0);
-        PlayerPrefs.Save();
+        Mixer.SetFloat("MusicVolume", -80);
+        _music.mute = true;
+        _music.Stop();
     }
 
     public void StartSounds()
     {
         Mixer.SetFloat("MasterVolume", 0);
-        PlayerPrefs.SetInt("Volume", 1);
-        PlayerPrefs.Save();
+        Mixer.SetFloat("MusicVolume", -30);
+        _music.mute = false;
+        _music.Play();
     }
 
     public void StopMusic()
     {
-        Mixer.SetFloat("MusicVolume", -80);
+        PlayerPrefs.SetInt("Volume", 0);
+        PlayerPrefs.Save();
     }
 
     public void StartMusic()
     {
-        Mixer.SetFloat("MusicVolume", -30);
+        PlayerPrefs.SetInt("Volume", 1);
+        PlayerPrefs.Save();
     }
 
     public void PlayNewRecordSound()

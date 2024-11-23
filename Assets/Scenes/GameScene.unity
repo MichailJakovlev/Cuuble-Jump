@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _yandexManager: {fileID: 201415361}
   _audioState: {fileID: 217997703}
+  _isNotShowingAd: 1
 --- !u!114 &217997703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   _crashSound: {fileID: 3708965314434147606}
   _fallSound: {fileID: 3717031907520758407}
   _buttonClickSound: {fileID: 4431158952507290804}
+  _music: {fileID: 986336713}
   Mixer: {fileID: 24100000, guid: 6226743a9dd2af6469d2c90048c426a9, type: 2}
 --- !u!114 &217997704
 MonoBehaviour:
@@ -869,6 +871,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726330189}
   m_CullTransparentMesh: 1
+--- !u!82 &986336713 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5989533276644718324, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
+  m_PrefabInstance: {fileID: 6616208944530825952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008534355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1463,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.08810139
     - serializedVersion: 3
-      time: 0.3
+      time: 0.4
       value: 2.25
       inSlope: -1.7999467
       outSlope: -1.7999467
@@ -1473,17 +1480,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -5
-      outSlope: -5
+      inSlope: -3.75
+      outSlope: -3.75
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.3
+      time: 0.4
       value: -1.5
-      inSlope: -5
-      outSlope: -5
+      inSlope: -3.75
+      outSlope: -3.75
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1515,7 +1522,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _animationTime: 0.25
+  _animationTime: 0.4
   _totalTime: 0
   _currentTime: 0
   pos: {x: 0, y: 0, z: 0}
@@ -2141,33 +2148,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 217997704}
-        m_TargetAssemblyTypeName: SceneState, Assembly-CSharp
-        m_MethodName: ToGameScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 201415361}
         m_TargetAssemblyTypeName: YandexManager, Assembly-CSharp
         m_MethodName: ShowFullscreenAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 217997702}
-        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
-        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3677,6 +3660,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 217997703}
+        m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
+        m_MethodName: StopMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5304219930685522772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3947,6 +3942,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4608725814879634342}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: EnableSoundButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 217997703}
+        m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
+        m_MethodName: StartMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4311,7 +4318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388602b1a3d28fc4687853436338e28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ru: 
+  _ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
   _en: 
   _tr: 
   _ar: 
@@ -4445,6 +4452,18 @@ PrefabInstance:
     - target: {fileID: 2525007545633838303, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989533276644718324, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989533276644718324, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989533276644718324, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8953325506199826126, guid: af86e679bc388014ebade56b8b4eca4b, type: 3}
       propertyPath: m_Name
@@ -9872,18 +9891,6 @@ MonoBehaviour:
       - m_Target: {fileID: 217997704}
         m_TargetAssemblyTypeName: SceneState, Assembly-CSharp
         m_MethodName: ToMenuScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 217997702}
-        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
-        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

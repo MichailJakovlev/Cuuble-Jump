@@ -66,31 +66,51 @@ public class YandexManager : MonoBehaviour
     // Rate game managment
     public void RateGame()
     {
+        _gameState.StopGame();
+        _gameState._isNotShowingAd = false;
         CallRateGame();
     }
 
     public void GetRatedAward()
     {
+        _gameState._isNotShowingAd = true;
+        _gameState.StartGame();
         _characterSkinManager.UnlockSkinReview();
     }
 
     // Ad managment
-    public void ShowFullscreenAd()
+    public void ShowFullscreenAd()  
     {
         _gameState.StopGame();
+        _gameState._isNotShowingAd = false;
         ShowAd();
+    }
+
+    public void AdClosed()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex == 0 ? 1 : 1);
+            _gameState._isNotShowingAd = true;
+            _gameState.StartGame();
+        }
+        else
+        {
+            _gameState._isNotShowingAd = true;
+            _gameState.StartGame();
+        }
     }
 
     public void ShowRewardAd(int num)
     {
         _gameState.StopGame();
+        _gameState._isNotShowingAd = false;
         ShowReward(num);
     }
 
     public void Rewarded(int num)
     {
-        _gameState.StartGame();
-
+        _gameState._isNotShowingAd = true;
         switch (num)
         {
             case 1:
