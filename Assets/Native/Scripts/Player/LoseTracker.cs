@@ -84,7 +84,7 @@ public class LoseTracker : MonoBehaviour
         {
             _player.transform.position = new Vector3(
                 _player.transform.position.x,
-                _player.transform.position.y - 0.01f,
+                _player.transform.position.y - 0.1f,
                 _player.transform.position.z
             );
             _fallingTime -= Time.fixedDeltaTime;
