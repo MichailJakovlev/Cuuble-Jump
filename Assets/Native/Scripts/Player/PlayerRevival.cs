@@ -31,13 +31,11 @@ public class PlayerRevival : MonoBehaviour
 
     public void Revive()
     {
-        _gameState.StartGame();
-
+        _player.GetComponent<BoxCollider>().enabled = false;
         _gameOverMenu.SetActive(false);
         _popupScreen.SetActive(false);
         _player.transform.GetChild(0).gameObject.SetActive(true);
-
-
+        _gameState.StartGame();
         _input._inputAllowed = true;
 
         List<Platform> platforms = _spawner._queuePlatforms.ToList();
@@ -71,7 +69,5 @@ public class PlayerRevival : MonoBehaviour
         _movement._jumpStrenghtCurve = new AnimationCurve(new Keyframe(0, playerPosition.y), new Keyframe(_movement._animationTime / 2, playerPosition.y + 1.5f), new Keyframe(_movement._animationTime, playerPosition.y + 0.75f));
         _movement._jumpDirectionAxisX = new AnimationCurve(new Keyframe(0, playerPosition.x), new Keyframe(_movement._animationTime, playerPosition.x - 1.5f));
         _movement._jumpDirectionAxisZ = new AnimationCurve(new Keyframe(0, playerPosition.z), new Keyframe(_movement._animationTime, playerPosition.z - 1.5f));
-
-        _player.GetComponent<BoxCollider>().enabled = false;
     }
 }

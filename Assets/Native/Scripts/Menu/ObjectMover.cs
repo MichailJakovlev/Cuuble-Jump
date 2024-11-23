@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectMover : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class ObjectMover : MonoBehaviour
     public RectTransform _skinView;
     public GameObject _shopUI;
     public GameObject _leaderboardUI;
+    [SerializeField, HideInInspector] float _speed = 1f;
 
-    [SerializeField]
-    float _speed = 10f;
+    [SerializeField] private Button _shopButton;
+    [SerializeField] private Button _closeShopButton;
+    [SerializeField] private Button _leaderboardButton;
+    [SerializeField] private Button _closeLeaderboardButton;
 
     float currentTmie;
 
@@ -20,11 +24,6 @@ public class ObjectMover : MonoBehaviour
     {
         startPosition = transform.localPosition;
     }
-
-    // private void OnRectTransformDimensionsChange()
-    // {
-    //   MoveOutOfCanvas();
-    // }
 
     public void MoveOutOfCanvasShop()
     {
@@ -65,16 +64,26 @@ public class ObjectMover : MonoBehaviour
 
     private IEnumerator MoveToTarget(RectTransform _object, Vector3 _targetPosition)
     {
-        currentTmie = 1;
+        currentTmie = Time.deltaTime;
         while (_object.localPosition != _targetPosition)
         {
             currentTmie += (float)Math.Sqrt(Time.deltaTime);
+
+            _shopButton.interactable = false;
+            _closeShopButton.interactable = false;
+            _leaderboardButton.interactable = false;
+            _closeLeaderboardButton.interactable = false;
+
             _object.localPosition = Vector3.MoveTowards(
                 _object.localPosition,
                 _targetPosition,
                 currentTmie * _speed
             );
             yield return null;
+            _shopButton.interactable = true;
+            _closeShopButton.interactable = true;
+            _leaderboardButton.interactable = true;
+            _closeLeaderboardButton.interactable = true;
         }
     }
 
