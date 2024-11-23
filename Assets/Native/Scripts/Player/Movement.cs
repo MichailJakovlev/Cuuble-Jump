@@ -10,13 +10,13 @@ public class Movement : MonoBehaviour
     [SerializeField] public AnimationCurve _jumpDirectionAxisZ;
     [SerializeField] public float _animationTime;
 
-    public float _totalTime;
-    public float _currentTime;
+   [HideInInspector] public float _totalTime;
+   [HideInInspector] public float _currentTime;
     int i = 0;
 
     public Vector3 pos;
-    public bool _inputAllowed = true;
-    public bool _isNotMoving = true;
+    [HideInInspector] public bool _inputAllowed = true;
+    [HideInInspector] public bool _isNotMoving = true;
 
     public void Start()
     {

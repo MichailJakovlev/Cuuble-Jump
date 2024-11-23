@@ -61,7 +61,7 @@ mergeInto(LibraryManager.library, {
       ysdk.adv.showFullscreenAdv({
       callbacks: {
           onClose: function(wasShown) {
-            gameInstance.SendMessage('GameState', 'StartGame');
+            gameInstance.SendMessage('YandexManager', 'AdClosed');
           },
           onError: function(error) {
           }
@@ -113,7 +113,7 @@ mergeInto(LibraryManager.library, {
               res.entries.forEach(line => {
                   var entry = {
                       "playerName": line.player.publicName,
-                      "rank": line.line,
+                      "rank": line.rank,
                       "score": line.score
                   };
                   lbEntries.push(entry);
