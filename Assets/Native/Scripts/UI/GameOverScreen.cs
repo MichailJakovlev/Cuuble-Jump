@@ -54,7 +54,7 @@ public class GameOverScreen : MonoBehaviour
             _audioState.PlayNewRecordSound();
             _newRecord.SetActive(true);
             _defeatScreen.SetActive(false);
-            _newRecordText.text = _scoreCounter.score.ToString();
+            _newRecordText.text = $"{_scoreCounter.score}";
             PlayerPrefs.SetInt("Record", _scoreCounter.score);
             PlayerPrefs.Save();
             _leaderboard.SetPlayerScore(_scoreCounter.score);
@@ -63,8 +63,8 @@ public class GameOverScreen : MonoBehaviour
         {
             _newRecord.SetActive(false);
             _defeatScreen.SetActive(true);
-            _scoreText.text = _scoreCounter.score.ToString();
-            _recordText.text = PlayerPrefs.GetInt("Record", 0).ToString();
+            _scoreText.text += $": {_scoreCounter.score}";
+            _recordText.text += $": {PlayerPrefs.GetInt("Record", 0)}";
         }
     }
 
