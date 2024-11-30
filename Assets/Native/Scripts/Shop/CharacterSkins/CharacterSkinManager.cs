@@ -18,6 +18,7 @@ public class CharacterSkinManager : MonoBehaviour
     public Button coinsButton;
     public TMPMenuCoins _menuCoins;
     public MenuPlayer _menuPlayer;
+    public Authorization _authorization;
     private List<string> unlockedSkins = new();
     private string selected;
 
@@ -60,17 +61,21 @@ public class CharacterSkinManager : MonoBehaviour
         CharacterSkin skin = skinDB.GetSkin(selectedOption);
         priceTMP.text = skin.price.ToString();
         SetActiveSkins(selectedOption);
-        SetActiveButton(defaultUnlockButton, new GameObject[] { reviewUnlockButton, selectButton, selectedItem });
+        SetActiveButton(defaultUnlockButton, new GameObject[] { _authorization._authorizationButton, reviewUnlockButton, selectButton, selectedItem });
         IsUnlocked(skin);
         if (skin.isDefault)
         {
-            SetActiveButton(selectButton, new GameObject[] { reviewUnlockButton, defaultUnlockButton, selectedItem });
+            SetActiveButton(selectButton, new GameObject[] { _authorization._authorizationButton, reviewUnlockButton, defaultUnlockButton, selectedItem });
             IsUnlocked(skin);
         }
         else if (skin.isReview)
         {
-            SetActiveButton(reviewUnlockButton, new GameObject[] { selectButton, defaultUnlockButton, selectedItem });
+            SetActiveButton(reviewUnlockButton, new GameObject[] { _authorization._authorizationButton, selectButton, defaultUnlockButton, selectedItem });
             IsUnlocked(skin);
+            if (_authorization.isAuthorization == false)
+            {
+                SetActiveButton(_authorization._authorizationButton, new GameObject[] { selectButton, defaultUnlockButton, selectedItem });
+            }
         }
 
     }
@@ -160,7 +165,7 @@ public class CharacterSkinManager : MonoBehaviour
 
         if (unlocked != null)
         {
-            SetActiveButton(selectButton, new GameObject[] { selectedItem, reviewUnlockButton, defaultUnlockButton });
+            SetActiveButton(selectButton, new GameObject[] { _authorization._authorizationButton, selectedItem, reviewUnlockButton, defaultUnlockButton });
             IsSelected(skin);
         }
     }
@@ -179,7 +184,7 @@ public class CharacterSkinManager : MonoBehaviour
         selected = PlayerPrefs.GetString("SkinSelected", "Cat");
         if (selected == skin.name.ToString())
         {
-            SetActiveButton(selectedItem, new GameObject[] { reviewUnlockButton, defaultUnlockButton, selectButton });
+            SetActiveButton(selectedItem, new GameObject[] { _authorization._authorizationButton, reviewUnlockButton, defaultUnlockButton, selectButton });
         }
     }
 }

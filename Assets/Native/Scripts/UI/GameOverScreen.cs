@@ -65,6 +65,15 @@ public class GameOverScreen : MonoBehaviour
             _defeatScreen.SetActive(true);
             _scoreText.text += $": {_scoreCounter.score}";
             _recordText.text += $": {PlayerPrefs.GetInt("Record", 0)}";
+            if (_isFirstTry == false)
+            {
+                string[] score = _scoreText.text.Split(':');
+                string[] record = _recordText.text.Split(':');
+                print(score[0]);
+                print(record[0]);
+                _scoreText.text = $"{score[0]}: {_scoreCounter.score}";
+                _recordText.text = $"{record[0]}: {PlayerPrefs.GetInt("Record", 0)}";
+            }
         }
     }
 

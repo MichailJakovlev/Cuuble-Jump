@@ -2212,92 +2212,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1846568966458770292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7879538091626119828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6319135f360054461a2bdca5e2713b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _configuration: {fileID: 0}
-  _positionType: 1
-  _positionLeft:
-    Value: NaN
-    Unit: 0
-  _positionTop:
-    Value: NaN
-    Unit: 0
-  _positionRight:
-    Value: NaN
-    Unit: 0
-  _positionBottom:
-    Value: NaN
-    Unit: 0
-  _direction: 1
-  _flexDirection: 2
-  _flexWrap: 0
-  _flexBasis:
-    Value: NaN
-    Unit: 3
-  _flexGrow: 0
-  _flexShrink: 1
-  _justifyContent: 0
-  _alignItems: 2
-  _alignSelf: 0
-  _alignContent: 0
-  _width:
-    Value: NaN
-    Unit: 3
-  _height:
-    Value: NaN
-    Unit: 3
-  _minWidth:
-    Value: NaN
-    Unit: 0
-  _minHeight:
-    Value: NaN
-    Unit: 0
-  _maxWidth:
-    Value: NaN
-    Unit: 0
-  _maxHeight:
-    Value: NaN
-    Unit: 0
-  _aspectRatio:
-    Value: NaN
-    Unit: 0
-  _marginLeft:
-    Value: 0
-    Unit: 1
-  _marginTop:
-    Value: 0
-    Unit: 1
-  _marginRight:
-    Value: 0
-    Unit: 1
-  _marginBottom:
-    Value: 0
-    Unit: 1
-  _paddingLeft:
-    Value: 0
-    Unit: 1
-  _paddingTop:
-    Value: 0
-    Unit: 1
-  _paddingRight:
-    Value: 0
-    Unit: 1
-  _paddingBottom:
-    Value: 0
-    Unit: 1
-  _gapColumn: 0
-  _gapRow: 0
-  _foldoutState: 01010101000101
 --- !u!1 &1996806470023073460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,25 +4042,6 @@ MonoBehaviour:
   _textCoins: {fileID: 7634544512462650063}
   _doubleCoinsButton: {fileID: 1656517012}
   _continueButton: {fileID: 3937494254078231760}
---- !u!224 &5858495069733114434
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7879538091626119828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7321051642719732985}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 377.47, y: -150}
-  m_SizeDelta: {x: 1015.2, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5860503727814045873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4629,7 +4524,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 332819382}
-  - {fileID: 5858495069733114434}
   - {fileID: 852480330499593458}
   - {fileID: 3214302013753715087}
   - {fileID: 2091548882465346756}
@@ -4901,23 +4795,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!1 &7879538091626119828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5858495069733114434}
-  - component: {fileID: 1846568966458770292}
-  m_Layer: 5
-  m_Name: Hud
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!222 &7890143003347071617
 CanvasRenderer:
   m_ObjectHideFlags: 0
