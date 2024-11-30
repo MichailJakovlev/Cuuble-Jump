@@ -22,6 +22,9 @@ public class YandexManager : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void ShowReward(int num);
 
+    [DllImport("__Internal")]
+    public static extern void GetPlayerAuthData(int num);
+
     [SerializeField] private GameState _gameState;
     [SerializeField] private PlayerRevival _playerRevival;
     [SerializeField] private GameOverScreen _gameOverScreen;
@@ -35,6 +38,8 @@ public class YandexManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             ShowFullscreenAd();
+
+            GetPlayerAuthData(1);
 
             _characterSkinManager = GameObject.Find("Current Skin").GetComponent<CharacterSkinManager>();
             _themeSkinManager = GameObject.Find("Current Theme").GetComponent<ThemeSkinManager>();
