@@ -68,7 +68,7 @@ mergeInto(LibraryManager.library, {
         }
       })
     },
-    
+
     ShowReward : function(num){
       ysdk.adv.showRewardedVideo({
       callbacks: {
@@ -111,7 +111,7 @@ mergeInto(LibraryManager.library, {
               };
               var lbEntries = [];
               res.entries.forEach(line => {
-                  var entry = {
+                  var entry = { 
                       "playerName": line.player.publicName,
                       "rank": line.rank,
                       "score": line.score
@@ -124,4 +124,37 @@ mergeInto(LibraryManager.library, {
           });
       })
     },
+
+     GetPlayerAuthData: function(num) {
+       var player;
+       function initPlayer() {
+       return ysdk.getPlayer().then(_player => {
+             player = _player;
+
+             console.log(player);
+             return player;
+         });
+       } 
+
+       initPlayer().then(_player => {
+         if (_player.getMode() === 'lite') {
+           // Игрок не авторизован.
+           console.log('AUTH NO');
+           ysdk.auth.openAuthDialog().then(() => {
+             // Игрок успешно авторизован.
+             console.log('AUTH YES');
+             initPlayer().catch(err => {
+               // Ошибка при инициализации объекта Player.
+               console.log('AUTH NO ERR');
+             });
+             }).catch(() => {
+               // Игрок не авторизован.
+               console.log('AUTH NO 2');
+             });
+         }
+     }).catch(err => {
+         // Ошибка при инициализации объекта Player.
+         console.log('AUTH ERROR');
+     });
+     }
   });
