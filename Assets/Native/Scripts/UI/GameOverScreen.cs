@@ -1,14 +1,17 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class GameOverScreen : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _score;
+    [SerializeField] private TextMeshProUGUI _record;
     [SerializeField] private ScoreCounter _scoreCounter;
-    [SerializeField] private TextMeshProUGUI _scoreText;
-    [SerializeField] private TextMeshProUGUI _recordText;
     [SerializeField] private TextMeshProUGUI _newRecordText;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _newRecord;
+    [SerializeField] private GameObject _pauseButton;
+    [SerializeField] private GameObject _scoreView;
     [SerializeField] private AudioState _audioState;
     [SerializeField] private Leaderboard _leaderboard;
 
@@ -20,13 +23,20 @@ public class GameOverScreen : MonoBehaviour
 
     private bool _isFirstTry = true;
 
-    public void SetFirstTryFalse() => _isFirstTry = false;
+    public void SetFirstTryFalse()
+    {
+        _isFirstTry = false;
+        _scoreView.SetActive(true);
+        _pauseButton.SetActive(true);
+    }
 
     public void Show()
     {
         _coinCounter = GameObject.Find("Canvas").GetComponent<CoinCounter>();
         _textCoins.text = $"+{_coinCounter.coins}";
         double percent = (double)_scoreCounter.score / PlayerPrefs.GetInt("Record", 0) * 100;
+        _scoreView.SetActive(false);
+        _pauseButton.SetActive(false);
 
 
         if (_scoreCounter.score == 0)
@@ -63,17 +73,8 @@ public class GameOverScreen : MonoBehaviour
         {
             _newRecord.SetActive(false);
             _defeatScreen.SetActive(true);
-            _scoreText.text += $": {_scoreCounter.score}";
-            _recordText.text += $": {PlayerPrefs.GetInt("Record", 0)}";
-            if (_isFirstTry == false)
-            {
-                string[] score = _scoreText.text.Split(':');
-                string[] record = _recordText.text.Split(':');
-                print(score[0]);
-                print(record[0]);
-                _scoreText.text = $"{score[0]}: {_scoreCounter.score}";
-                _recordText.text = $"{record[0]}: {PlayerPrefs.GetInt("Record", 0)}";
-            }
+            _score.text = $"{_scoreCounter.score}";
+            _record.text = $"{PlayerPrefs.GetInt("Record", 0)}";
         }
     }
 

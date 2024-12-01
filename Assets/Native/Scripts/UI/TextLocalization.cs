@@ -33,39 +33,39 @@ public class TextLocalization : MonoBehaviour
         // Turkish
         else if (Localization._instance._currentLanguage == "tr" || Localization._instance._currentLanguage == "tr-TR")
         {
-            GetComponent<TextMeshProUGUI>().text = _tr + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _tr;
         }
 
         // Arabic
         else if (Localization._instance._currentLanguage == "ar" || Localization._instance._currentLanguage == "ar-AR")
         {
             GetComponent<TextMeshProUGUI>().font = _arFont;
-            GetComponent<TextMeshProUGUI>().text = _ar + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _ar;
         }
 
         // Japanese
         else if (Localization._instance._currentLanguage == "ja" || Localization._instance._currentLanguage == "ja-JA")
         {
             GetComponent<TextMeshProUGUI>().font = _jaFont;
-            GetComponent<TextMeshProUGUI>().text = _ja + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _ja;
         }
 
         // German
         else if (Localization._instance._currentLanguage == "de" || Localization._instance._currentLanguage == "de-DE")
         {
-            GetComponent<TextMeshProUGUI>().text = _de + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _de;
         }
 
         // Spanish
         else if (Localization._instance._currentLanguage == "es" || Localization._instance._currentLanguage == "es-ES")
         {
-            GetComponent<TextMeshProUGUI>().text = _es + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _es;
         }
 
         // English
         else
         {
-            GetComponent<TextMeshProUGUI>().text = _en + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _en;
         }
     }
 }

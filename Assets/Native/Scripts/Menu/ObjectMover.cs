@@ -9,7 +9,7 @@ public class ObjectMover : MonoBehaviour
     public RectTransform _skinView;
     public GameObject _shopUI;
     public GameObject _leaderboardUI;
-    [SerializeField, HideInInspector] float _speed = 1f;
+    [SerializeField, HideInInspector] float _speed = 1;
 
     [SerializeField] private Button _shopButton;
     [SerializeField] private Button _closeShopButton;
@@ -77,7 +77,7 @@ public class ObjectMover : MonoBehaviour
             _object.localPosition = Vector3.MoveTowards(
                 _object.localPosition,
                 _targetPosition,
-                currentTmie * _speed
+                currentTmie * _speed * 2.5f
             );
             yield return null;
             _shopButton.interactable = true;
