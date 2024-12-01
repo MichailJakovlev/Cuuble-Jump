@@ -52,7 +52,7 @@ mergeInto(LibraryManager.library, {
                           gameInstance.SendMessage('YandexManager', 'GetRatedAward');
                       })
               } else {
-                  console.log(reason)
+                gameInstance.SendMessage('YandexManager', 'ReviewToPrice'); 
               }
           })
     },
@@ -125,7 +125,7 @@ mergeInto(LibraryManager.library, {
       })
     },
 
-     GetPlayerAuthData: function(num) {
+     GetPlayerAuthData: function() {
        var player;
        function initPlayer() {
        return ysdk.getPlayer().then(_player => {
@@ -142,6 +142,7 @@ mergeInto(LibraryManager.library, {
            console.log('AUTH NO');
            ysdk.auth.openAuthDialog().then(() => {
              // Игрок успешно авторизован.
+             gameInstance.SendMessage('YandexManager', 'Auth');   
              console.log('AUTH YES');
              initPlayer().catch(err => {
                // Ошибка при инициализации объекта Player.
@@ -152,9 +153,14 @@ mergeInto(LibraryManager.library, {
                console.log('AUTH NO 2');
              });
          }
-     }).catch(err => {
+         else
+         {
+            gameInstance.SendMessage('YandexManager', 'Auth');
+         }
+     }
+    ).catch(err => {
          // Ошибка при инициализации объекта Player.
          console.log('AUTH ERROR');
-     });
+     }); 
      }
   });

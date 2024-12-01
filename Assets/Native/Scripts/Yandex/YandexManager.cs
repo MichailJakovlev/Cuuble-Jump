@@ -23,11 +23,14 @@ public class YandexManager : MonoBehaviour
     public static extern void ShowReward(int num);
 
     [DllImport("__Internal")]
-    public static extern void GetPlayerAuthData(int num);
+    public static extern void GetPlayerAuthData();
 
     [SerializeField] private GameState _gameState;
     [SerializeField] private PlayerRevival _playerRevival;
     [SerializeField] private GameOverScreen _gameOverScreen;
+    [SerializeField] private Authorization _authorization;
+    [SerializeField] private Leaderboard _leaderboard;
+    [SerializeField] private CharacterSkinDB _skinDb;
     private CharacterSkinManager _characterSkinManager;
     private ThemeSkinManager _themeSkinManager;
 
@@ -39,7 +42,7 @@ public class YandexManager : MonoBehaviour
         {
             ShowFullscreenAd();
 
-            GetPlayerAuthData(1);
+            GetPlayerAuthData();
 
             _characterSkinManager = GameObject.Find("Current Skin").GetComponent<CharacterSkinManager>();
             _themeSkinManager = GameObject.Find("Current Theme").GetComponent<ThemeSkinManager>();
@@ -111,6 +114,19 @@ public class YandexManager : MonoBehaviour
         _gameState.StopGame();
         _gameState._isNotShowingAd = false;
         ShowReward(num);
+    }
+
+    public void Auth()
+    {
+        _authorization.AuthorizationClick();
+        _leaderboard.SetPlayerScore(PlayerPrefs.GetInt("Record"));
+        _leaderboard.AuthGetScore();
+    }
+
+    public void ReviewToPrice()
+    {
+        _gameState.StartGame();
+        _skinDb.skins[9].isReview = false;
     }
 
     public void Rewarded(int num)

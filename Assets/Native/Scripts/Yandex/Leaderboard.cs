@@ -11,7 +11,8 @@ public class Leaderboard : MonoBehaviour
 
     [SerializeField] private GameObject _leaderboardPanel;
     [SerializeField] private LBContent _content;
-    private bool _isLeaderboardClear;
+    [SerializeField] private Authorization _authtorization;
+    [HideInInspector] public bool _isLeaderboardClear;
 
     private void Awake()
     {
@@ -44,7 +45,10 @@ public class Leaderboard : MonoBehaviour
 
     public void SetPlayerScore(int record)
     {
-        SetScoreLeaderboard(record);
+        if (_authtorization.isAuthorization == true)
+        {
+            SetScoreLeaderboard(record);
+        }
     }
 
     public void OpenLeaderboard()
@@ -54,6 +58,11 @@ public class Leaderboard : MonoBehaviour
             GetScoreLeaderboard();
             _isLeaderboardClear = false;
         }
+    }
+
+    public void AuthGetScore()
+    {
+        GetScoreLeaderboard();
     }
 
     public void CloseLeaderboard()

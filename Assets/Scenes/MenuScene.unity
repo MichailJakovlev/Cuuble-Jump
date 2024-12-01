@@ -427,9 +427,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 824443043}
-        m_TargetAssemblyTypeName: Authorization, Assembly-CSharp
-        m_MethodName: AuthorizationClick
+      - m_Target: {fileID: 1780617575}
+        m_TargetAssemblyTypeName: YandexManager, Assembly-CSharp
+        m_MethodName: GetPlayerAuthData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3408,7 +3408,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1384855009}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
-        m_MethodName: StartSounds
+        m_MethodName: StartMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3420,7 +3420,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1384855009}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
-        m_MethodName: StartMusic
+        m_MethodName: StartSounds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3504,7 +3504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.056289595, y: 0.08258268}
   m_AnchorMax: {x: 0.9406691, y: 0.91800004}
-  m_AnchoredPosition: {x: -0.3944702, y: -1.7159424}
+  m_AnchoredPosition: {x: -0.39440918, y: -1.7159424}
   m_SizeDelta: {x: -0.789, y: -3.4299927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514758327
@@ -4988,6 +4988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stopSoundButton: {fileID: 1903173828}
   _startSoundButton: {fileID: 482294189}
+  _reviewButton: {fileID: 904371698}
 --- !u!114 &824443038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5051,6 +5052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _authorizationButton: {fileID: 1258638648}
   _authorizationAlertPanel: {fileID: 514758325}
+  _leaderboadrHead: {fileID: 169886497}
   isAuthorization: 0
 --- !u!1 &838337094
 GameObject:
@@ -5217,7 +5219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516d71cec40bb644ca35682655c1730d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 8674336828515875131, guid: 52b25dd440c598b46b5fcc75f8a2693e, type: 3}
+  _itemPrefab: {fileID: 7001260545002046440, guid: 52b25dd440c598b46b5fcc75f8a2693e, type: 3}
 --- !u!1 &882096310
 GameObject:
   m_ObjectHideFlags: 0
@@ -5625,6 +5627,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1384855009}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
         m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 824443037}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ReviewButtonOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7919,9 +7933,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 824443043}
-        m_TargetAssemblyTypeName: Authorization, Assembly-CSharp
-        m_MethodName: AuthorizationClick
+      - m_Target: {fileID: 1780617575}
+        m_TargetAssemblyTypeName: YandexManager, Assembly-CSharp
+        m_MethodName: GetPlayerAuthData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8035,6 +8049,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leaderboardPanel: {fileID: 96148431}
   _content: {fileID: 867144697}
+  _authtorization: {fileID: 824443043}
+  _isLeaderboardClear: 0
 --- !u!4 &1327132322
 Transform:
   m_ObjectHideFlags: 0
@@ -9017,6 +9033,9 @@ MonoBehaviour:
   _gameState: {fileID: 1384855011}
   _playerRevival: {fileID: 0}
   _gameOverScreen: {fileID: 0}
+  _authorization: {fileID: 824443043}
+  _leaderboard: {fileID: 1327132321}
+  _skinDb: {fileID: 11400000, guid: d3760dfc9f111dd47baf1fa457daae19, type: 2}
 --- !u!4 &1780617576
 Transform:
   m_ObjectHideFlags: 0
@@ -9642,18 +9661,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384855009}
-        m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
-        m_MethodName: StopSounds
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 824443037}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: DisableSoundButton
@@ -9669,6 +9676,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1384855009}
         m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
         m_MethodName: StopMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1384855009}
+        m_TargetAssemblyTypeName: AudioState, Assembly-CSharp
+        m_MethodName: StopSounds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
