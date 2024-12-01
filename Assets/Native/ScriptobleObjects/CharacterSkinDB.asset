@@ -60,6 +60,6 @@ MonoBehaviour:
     isReview: 0
   - skinModel: {fileID: 6842781699926589519, guid: ff94491b104c9b94f92ca2de6f3a58e9, type: 3}
     name: 8
-    price: 0
+    price: 1000
     isDefault: 0
     isReview: 1

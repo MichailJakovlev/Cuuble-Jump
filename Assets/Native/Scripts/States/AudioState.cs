@@ -10,6 +10,8 @@ public class AudioState : MonoBehaviour
     [SerializeField] private AudioSource _music;
     public AudioMixer Mixer;
 
+    bool _isSoundsOff = false;
+
     void Start()
     {
         if (PlayerPrefs.GetInt("Volume", 1) == 1)
@@ -18,11 +20,10 @@ public class AudioState : MonoBehaviour
         }
         else
         {
+            _isSoundsOff = true;
             StopSounds();
         }
     }
-
-    
 
     public void StopSounds()
     {
@@ -34,20 +35,25 @@ public class AudioState : MonoBehaviour
 
     public void StartSounds()
     {
-        Mixer.SetFloat("MasterVolume", 0);
-        Mixer.SetFloat("MusicVolume", -30);
-        _music.mute = false;
-        _music.Play();
+        if (_isSoundsOff == false)
+        {
+            Mixer.SetFloat("MasterVolume", 0);
+            Mixer.SetFloat("MusicVolume", -30);
+            _music.mute = false;
+            _music.Play();
+        }
     }
 
     public void StopMusic()
     {
+        _isSoundsOff = true;
         PlayerPrefs.SetInt("Volume", 0);
         PlayerPrefs.Save();
     }
 
     public void StartMusic()
     {
+        _isSoundsOff = false;
         PlayerPrefs.SetInt("Volume", 1);
         PlayerPrefs.Save();
     }

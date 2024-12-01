@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject _stopSoundButton;
     public GameObject _startSoundButton;
+    [SerializeField] private Button _reviewButton;
 
     void Start()
     {
@@ -15,6 +17,11 @@ public class UIManager : MonoBehaviour
         {
             DisableSoundButton();
         }
+    }
+
+    public void ReviewButtonOff()
+    {
+        _reviewButton.interactable = false;
     }
 
     public void DisableSoundButton()
