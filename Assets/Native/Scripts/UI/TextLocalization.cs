@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 
@@ -14,50 +15,52 @@ public class TextLocalization : MonoBehaviour
     [SerializeField] private TMP_FontAsset _arFont;
     [SerializeField] private TMP_FontAsset _jaFont;
 
-    private void Start()
+    [HideInInspector] public string _currentLanguage;
+
+    [DllImport("__Internal")]
+    public static extern string GetLang();
+
+    public void Start()
     {
+        _currentLanguage = GetLang();
+
         // Russian
         if (
-            Localization._instance._currentLanguage == "ru"
-            || Localization._instance._currentLanguage == "ru-RU"
-            || Localization._instance._currentLanguage == "ru-KG"
-            || Localization._instance._currentLanguage == "ru-KZ"
-            || Localization._instance._currentLanguage == "ru-MD"
-            || Localization._instance._currentLanguage == "ru-BY"
-            || Localization._instance._currentLanguage == "ru-UA"
+             _currentLanguage == "ru"
+       
         )
         {
-            GetComponent<TextMeshProUGUI>().text = _ru + GetComponent<TextMeshProUGUI>().text;
+            GetComponent<TextMeshProUGUI>().text = _ru;
         }
 
         // Turkish
-        else if (Localization._instance._currentLanguage == "tr" || Localization._instance._currentLanguage == "tr-TR")
+        else if (_currentLanguage == "tr")
         {
             GetComponent<TextMeshProUGUI>().text = _tr;
         }
 
         // Arabic
-        else if (Localization._instance._currentLanguage == "ar" || Localization._instance._currentLanguage == "ar-AR")
+        else if (_currentLanguage == "ar")
         {
             GetComponent<TextMeshProUGUI>().font = _arFont;
             GetComponent<TextMeshProUGUI>().text = _ar;
         }
 
         // Japanese
-        else if (Localization._instance._currentLanguage == "ja" || Localization._instance._currentLanguage == "ja-JA")
+        else if (_currentLanguage == "ja")
         {
             GetComponent<TextMeshProUGUI>().font = _jaFont;
             GetComponent<TextMeshProUGUI>().text = _ja;
         }
 
         // German
-        else if (Localization._instance._currentLanguage == "de" || Localization._instance._currentLanguage == "de-DE")
+        else if (_currentLanguage == "de")
         {
             GetComponent<TextMeshProUGUI>().text = _de;
         }
 
         // Spanish
-        else if (Localization._instance._currentLanguage == "es" || Localization._instance._currentLanguage == "es-ES")
+        else if (_currentLanguage == "es")
         {
             GetComponent<TextMeshProUGUI>().text = _es;
         }

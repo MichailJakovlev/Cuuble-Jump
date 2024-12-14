@@ -36,7 +36,6 @@ public class PlayerRevival : MonoBehaviour
         _gameOverMenu.SetActive(false);
         _popupScreen.SetActive(false);
         _player.transform.GetChild(0).gameObject.SetActive(true);
-        _gameState.StartGame();
         _input._inputAllowed = true;
 
         List<Platform> platforms = _spawner._queuePlatforms.ToList();

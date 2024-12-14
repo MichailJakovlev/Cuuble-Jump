@@ -25,6 +25,9 @@ public class YandexManager : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void GetPlayerAuthData();
 
+    [DllImport("__Internal")]
+    public static extern void AuthingPlayer();
+
     [SerializeField] private GameState _gameState;
     [SerializeField] private PlayerRevival _playerRevival;
     [SerializeField] private GameOverScreen _gameOverScreen;
@@ -119,6 +122,7 @@ public class YandexManager : MonoBehaviour
     public void Auth()
     {
         _authorization.AuthorizationClick();
+        _leaderboard._isAuthtorization = true;
         _leaderboard.SetPlayerScore(PlayerPrefs.GetInt("Record"));
         _leaderboard.AuthGetScore();
     }
@@ -131,7 +135,6 @@ public class YandexManager : MonoBehaviour
 
     public void Rewarded(int num)
     {
-        _gameState._isNotShowingAd = true;
         switch (num)
         {
             case 1:

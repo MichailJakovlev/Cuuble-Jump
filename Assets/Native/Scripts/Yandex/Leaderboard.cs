@@ -11,7 +11,7 @@ public class Leaderboard : MonoBehaviour
 
     [SerializeField] private GameObject _leaderboardPanel;
     [SerializeField] private LBContent _content;
-    [SerializeField] private Authorization _authtorization;
+    [HideInInspector] public bool _isAuthtorization = false;
     [HideInInspector] public bool _isLeaderboardClear;
 
     private void Awake()
@@ -45,7 +45,7 @@ public class Leaderboard : MonoBehaviour
 
     public void SetPlayerScore(int record)
     {
-        if (_authtorization.isAuthorization == true)
+        if (_isAuthtorization == true)
         {
             SetScoreLeaderboard(record);
         }

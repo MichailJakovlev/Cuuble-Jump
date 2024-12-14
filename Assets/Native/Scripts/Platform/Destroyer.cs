@@ -36,8 +36,8 @@ public class Destroyer : MonoBehaviour
                     _isLosed = false;
                 }
 
-                _audioState = FindAnyObjectByType<GameState>().GetComponent<AudioState>();
-                _audioState.PlayFallSound();
+               // _audioState = FindAnyObjectByType<GameState>().GetComponent<AudioState>();
+               // _audioState.PlayFallSound();
 
                 PlayerPrefs.SetInt("isFallingOnPlatform", 1);
                 yield return new WaitForSeconds(0.001f);

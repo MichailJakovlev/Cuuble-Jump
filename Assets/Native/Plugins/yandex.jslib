@@ -24,16 +24,16 @@ mergeInto(LibraryManager.library, {
       }
     },
 
-    GetLang : function () {
+    GetLang: function () {
       try {
         var lang = ysdk.environment.i18n.lang;
         var bufferSize = lengthBytesUTF8(lang) + 1;
         var buffer = _malloc(bufferSize);
         stringToUTF8(lang, buffer, bufferSize);
-        console.log('YSDK LANG', buffer);
+        console.log('YSDK i18n', ysdk.environment.i18n.lang);
         return buffer;
-      } catch(err) {
-        // Получить язык с браузера
+      } catch(err){
+        // взять язык с браузера
         var lang = navigator.language;
         var bufferSize = lengthBytesUTF8(lang) + 1;
         var buffer = _malloc(bufferSize);
@@ -125,6 +125,22 @@ mergeInto(LibraryManager.library, {
       })
     },
 
+
+    AuthingPlayer : function() {
+      ysdk.auth.openAuthDialog().then(() => {
+        // Игрок успешно авторизован.
+        gameInstance.SendMessage('YandexManager', 'Auth');   
+        console.log('AUTH YES');
+        initPlayer().catch(err => {
+          // Ошибка при инициализации объекта Player.
+          console.log('AUTH NO ERR');
+        });
+        }).catch(() => {
+          // Игрок не авторизован.
+          console.log('AUTH NO 2');
+        }); 
+    },
+
      GetPlayerAuthData: function() {
        var player;
        function initPlayer() {
@@ -140,18 +156,6 @@ mergeInto(LibraryManager.library, {
          if (_player.getMode() === 'lite') {
            // Игрок не авторизован.
            console.log('AUTH NO');
-           ysdk.auth.openAuthDialog().then(() => {
-             // Игрок успешно авторизован.
-             gameInstance.SendMessage('YandexManager', 'Auth');   
-             console.log('AUTH YES');
-             initPlayer().catch(err => {
-               // Ошибка при инициализации объекта Player.
-               console.log('AUTH NO ERR');
-             });
-             }).catch(() => {
-               // Игрок не авторизован.
-               console.log('AUTH NO 2');
-             });
          }
          else
          {

@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
 
     public void StartGame()
     {
+        _isNotShowingAd = true;
         _yandexManager.StartGame();
         _audioState.StartSounds();
         Time.timeScale = 1;

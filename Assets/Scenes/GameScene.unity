@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &201415361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +192,9 @@ MonoBehaviour:
   _gameState: {fileID: 217997702}
   _playerRevival: {fileID: 1957886036}
   _gameOverScreen: {fileID: 5839242927807276744}
+  _authorization: {fileID: 0}
+  _leaderboard: {fileID: 0}
+  _skinDb: {fileID: 0}
 --- !u!4 &201415362
 Transform:
   m_ObjectHideFlags: 0
@@ -225,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &217997702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +581,7 @@ MonoBehaviour:
   _es: "R\xE9cord"
   _arFont: {fileID: 11400000, guid: 3c460f2e55544b940b8ff2762f5367df, type: 2}
   _jaFont: {fileID: 11400000, guid: 315d8ea68bcf432488987d3083ce28ad, type: 2}
+  _currentLanguage: 
 --- !u!114 &522129539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1008534356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,6 +1104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leaderboardPanel: {fileID: 0}
   _content: {fileID: 0}
+  _isAuthtorization: 0
+  _isLeaderboardClear: 0
 --- !u!4 &1008534357
 Transform:
   m_ObjectHideFlags: 0
@@ -1641,6 +1647,7 @@ MonoBehaviour:
   _es: Resultado
   _arFont: {fileID: 11400000, guid: 3c460f2e55544b940b8ff2762f5367df, type: 2}
   _jaFont: {fileID: 11400000, guid: 315d8ea68bcf432488987d3083ce28ad, type: 2}
+  _currentLanguage: 
 --- !u!114 &1706528615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1948,6 +1955,7 @@ MonoBehaviour:
   _es: "R\xE9cord"
   _arFont: {fileID: 11400000, guid: 3c460f2e55544b940b8ff2762f5367df, type: 2}
   _jaFont: {fileID: 11400000, guid: 315d8ea68bcf432488987d3083ce28ad, type: 2}
+  _currentLanguage: 
 --- !u!114 &1901455708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3158,6 +3166,7 @@ MonoBehaviour:
   _es: "Nuevo r\xE9cord"
   _arFont: {fileID: 11400000, guid: 3c460f2e55544b940b8ff2762f5367df, type: 2}
   _jaFont: {fileID: 11400000, guid: 315d8ea68bcf432488987d3083ce28ad, type: 2}
+  _currentLanguage: 
 --- !u!224 &2904280886929277399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3786,6 +3795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stopSoundButton: {fileID: 4540652736150052557}
   _startSoundButton: {fileID: 2157371199215784842}
+  _reviewButton: {fileID: 0}
 --- !u!1 &4742810488724465887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,6 +4507,7 @@ MonoBehaviour:
   _es: Continuar
   _arFont: {fileID: 11400000, guid: 3c460f2e55544b940b8ff2762f5367df, type: 2}
   _jaFont: {fileID: 11400000, guid: 315d8ea68bcf432488987d3083ce28ad, type: 2}
+  _currentLanguage: 
 --- !u!114 &6304265434732396015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4554,6 +4565,7 @@ MonoBehaviour:
   _es: Continuar
   _arFont: {fileID: 11400000, guid: 3c460f2e55544b940b8ff2762f5367df, type: 2}
   _jaFont: {fileID: 11400000, guid: 315d8ea68bcf432488987d3083ce28ad, type: 2}
+  _currentLanguage: 
 --- !u!114 &6597570769935272838
 MonoBehaviour:
   m_ObjectHideFlags: 0
